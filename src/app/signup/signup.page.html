@@ -1,0 +1,91 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <div>
+        <div>
+            <header class="header">
+                <div class="header-main">
+                    <a href="">
+                        <div class="header-main_logo">
+                            <img src="/assets/img/safire_logo_header.png" alt="SaFireロゴ">
+                        </div>
+                    </a>
+                </div>
+            </header>
+            <div class="main">
+                <section class="signup-main">
+                    <div class="signup-main_card">
+                        <h2 class="signup-main_title">新規登録ページ</h2>
+                        <hr color="#136fff">
+                        <form>
+                            <div class="signup-userid">
+                                <div class="signup-userid_title">
+                                    <p>ユーザID</p>
+                                </div>
+                                <input type="text" value="" class="signup-userid_input">
+                            </div>
+                            <div class="signup-passwd">
+                                <div class="signup-passwd_title">
+                                    <p>パスワード</p>
+                                </div>
+                                <input type="password" value="" class="signup-passwd_input">
+                            </div>
+                            <div class="signup-passwd-confirm">
+                                <div class="signup-passwd-confirm_title">
+                                    <p>パスワード（確認用）</p>
+                                </div>
+                                <input type="password" value="" class="signup-passwd-confirm_input">
+                            </div>
+                            <div class="signup-age">
+                                <div class="signup-age_title">
+                                    <p>年齢</p>
+                                </div>
+                                <input type="number" value="" class="signup-age_input">
+                            </div>
+                            <div class="signup-gender">
+                                <div class="signup-gender_title">
+                                    <p>性別</p>
+                                </div>
+                                <label class="signup-gender_radio">
+                                    <input type="radio" name="signup_gender_radio" value="man">男性
+                                </label>
+                                <label class="signup-gender_radio">
+                                    <input type="radio" name="signup_gender_radio" value="woman">女性
+                                </label>
+                                <label class="signup-gender_radio">
+                                    <input type="radio" name="signup_gender_radio" value="other" checked>その他
+                                </label>
+                            </div>
+                            <div class="signup-profile">
+                                <div class="signup-profile_title">
+                                    <p>自己紹介</p>
+                                </div>
+                                <textarea class="signup-profile_input"></textarea>
+                            </div>
+
+                            <ion-button class="signup-send" (click)='signup()'>新規登録</ion-button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <footer class="footer">
+                <div class="footer-body">
+                    <div class="footer-body_logo">
+                        <div class="display_flex">
+                            <img id="safire_mark" src="/assets/img/safire.png" alt="safireマーク">
+                            <img id="safire_logo" src="/assets/img/safire_logo.png" alt="SaFireロゴ">
+                        </div>
+                        <p>宝石である「あなたの挑戦」をさらに磨き上げる！</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</ion-content>

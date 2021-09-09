@@ -1,0 +1,369 @@
+<!-- <ion-header>
+    <ion-toolbar>
+            <ion-title>
+                Ionic 5 Form
+            </ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="false">
+    <div>
+        <div>
+            <header class="header">
+                <div class="header-main">
+                    <a href="">
+                        <div class="header-main_logo">
+                            <img src="/assets/img/safire_logo_header.png" alt="SaFireロゴ">
+                        </div>
+                    </a>
+                    <div class="header-main_menu">
+                        <ion-button class="header-main_menu_signup" (click)='signup()'>新規登録</ion-button>
+                        <ion-button class="header-main_menu_login" (click)='login()'>ログイン</ion-button>
+                    </div>
+                </div>
+            </header>
+            <div class="home-main">
+                <section class="recommended-user-list">
+                    <h2 class="recommended-user-list_title">おすすめのユーザ</h2>
+                    <div class="recommended-user-list_content">
+                        <div class="recommended-users">
+                            <ion-row class="recommended-users-list">
+                                <!-- <li> -->
+                                    <a>
+                                        <ion-card class="user-card">
+                                            <div class="user-card_icon">
+                                                <img src="/assets/img/user_ex_icon.jpg">
+                                            </div>
+                                            <ul class="user-card_profile">
+                                                <li class="user-card_name">
+                                                    <p>サファ太郎</p>
+                                                </li>
+                                                <li class="user-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </ion-card>
+                                    </a>
+                                <!-- </li>
+                                <li> -->
+                                    <a>
+                                        <ion-card class="user-card">
+                                            <div class="user-card_icon">
+                                                <img src="/assets/img/user_ex_icon.jpg">
+                                            </div>
+                                            <ul class="user-card_profile">
+                                                <li class="user-card_name">
+                                                    <p>サファ太郎</p>
+                                                </li>
+                                                <li class="user-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </ion-card>
+                                    </a>
+                                <!-- </li>
+                                <li> -->
+                                    <a>
+                                        <ion-card class="user-card">
+                                            <div class="user-card_icon">
+                                                <img src="/assets/img/user_ex_icon.jpg">
+                                            </div>
+                                            <ul class="user-card_profile">
+                                                <li class="user-card_name">
+                                                    <p>サファ太郎</p>
+                                                </li>
+                                                <li class="user-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </ion-card>
+                                    </a>
+                                <!-- </li> -->
+                                </ion-row>
+                        </div>
+                    </div>
+                </section>
+                <section class="project-list">
+                    <h2 class="project-list_title">みんなの作品</h2>
+                    <div class="project-list_content">
+                        <div class="projects">
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                    <ion-col>
+                                        <ion-card class="project-card">
+                                            <div class="project-card_thumnail">
+                                                <img src="/assets/img/thumbnail_ex.png">
+                                            </div>
+                                            <h3 class="project-card_title">すごいサービス</h3>
+                                            <div class="project-card_tags">
+                                                <ul class="project-card_tag">
+                                                    <li>AI</li>
+                                                </ul>
+                                                <ul class="project-card_tag">
+                                                    <li>Python</li>
+                                                </ul>
+                                            </div>
+                                            <div class="project-card_user">
+                                                <p>サファ太郎参号機</p>
+                                            </div>
+                                            <div class="project-card_date">
+                                                <p>20YY.MM.DD</p>
+                                            </div>
+                                            <div class="project-card_promotion">
+                                                <p>ここがすごい！<br>そういうサービス！</p>
+                                            </div>
+                                        </ion-card>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                    <div class="view-ranking">
+                        <h3 class="view-ranking_title">閲覧数ランキング</h3>
+                        <!-- <form>
+                            <dl class="view-ranking_search">
+                                <dt><input type="text" name="search" value="" placeholder="Search"></dt>
+                                <dd><button><span></span></button></dd>
+                            </dl>
+                        </form> -->
+                        <ion-col class="view-ranking_list">
+                            <!-- <li> -->
+                                <a>
+                                    <div class="ranking-card">
+                                        <div class="ranking-card_rank">
+                                            <img src="/assets/img/view_ranking_1.png">
+                                        </div>
+                                        <div class="ranking-card_desc">
+                                            <ul class="ranking-card_project">
+                                                <li class="ranking-card_name">
+                                                    <p>すごいサービス</p>
+                                                </li>
+                                                <li class="ranking-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            <!-- </li>
+                            <li> -->
+                                <a>
+                                    <div class="ranking-card">
+                                        <div class="ranking-card_rank">
+                                            <img src="/assets/img/view_ranking_2.png">
+                                        </div>
+                                        <div class="ranking-card_desc">
+                                            <ul class="ranking-card_project">
+                                                <li class="ranking-card_name">
+                                                    <p>すごいサービス</p>
+                                                </li>
+                                                <li class="ranking-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            <!-- </li>
+                            <li> -->
+                                <a>
+                                    <div class="ranking-card">
+                                        <div class="ranking-card_rank">
+                                            <img src="/assets/img/view_ranking_3.png">
+                                        </div>
+                                        <div class="ranking-card_desc">
+                                            <ul class="ranking-card_project">
+                                                <li class="ranking-card_name">
+                                                    <p>すごいサービス</p>
+                                                </li>
+                                                <li class="ranking-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            <!-- </li>
+                            <li> -->
+                                <a>
+                                    <div class="ranking-card">
+                                        <div class="ranking-card_rank">
+                                            <img src="/assets/img/view_ranking_other.png">
+                                        </div>
+                                        <div class="ranking-card_desc">
+                                            <ul class="ranking-card_project">
+                                                <li class="ranking-card_name">
+                                                    <p>すごいサービス</p>
+                                                </li>
+                                                <li class="ranking-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            <!-- </li>
+                            <li> -->
+                                <a>
+                                    <div class="ranking-card">
+                                        <div class="ranking-card_rank">
+                                            <img src="/assets/img/view_ranking_other.png">
+                                        </div>
+                                        <div class="ranking-card_desc">
+                                            <ul class="ranking-card_project">
+                                                <li class="ranking-card_name">
+                                                    <p>すごいサービス</p>
+                                                </li>
+                                                <li class="ranking-card_tags">
+                                                    <p>タグ: AI, IoT</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            <!-- </li> -->
+                        </ion-col>
+                    </div>
+                </section>
+            </div>
+            <footer class="footer">
+                <div class="footer-body">
+                    <div class="footer-body_logo">
+                        <div class="display_flex">
+                            <img id="safire_mark" src="/assets/img/safire.png" alt="safireマーク">
+                            <img id="safire_logo" src="/assets/img/safire_logo.png" alt="SaFireロゴ">
+                        </div>
+                        <p>宝石である「あなたの挑戦」をさらに磨き上げる！</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</ion-content>
