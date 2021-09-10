@@ -22,7 +22,7 @@
                 </div>
             </header>
             <div class="home-main">
-                <div class="text_center"><h1 class="user_name">サファ太郎</h1></div>
+                <div class="text_center"><h1 class="user_name">{{user_id}}</h1></div>
                 <section class="user-info">
                     <div class="user-info_icon">
                         <img id="user_icon" src="/assets/img/user_ex_icon.jpg">
@@ -31,12 +31,12 @@
                         <div class="user-card_profile_content">
                             <img src="/assets/img/ring_memo.jpeg">
                             <h3>自己紹介</h3>
-                            <textarea id="project_description" readonly>サファ太郎です。普段はWebアプリとか作ってます。PythonとかJavaScriptとか得意です。Kotlin勉強中！</textarea>
+                            <textarea id="project_description" readonly>{{description}}</textarea>
                         </div>
                     </div>
                 </section>
                 <section class="project-list">
-                    <h2 class="project-list_title">サイファ太郎さんの作品</h2>
+                    <h2 class="project-list_title">{{user_id}}さんの作品</h2>
                     <div class="project-list_content">
                         <div class="projects">
                             <ion-grid>

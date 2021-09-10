@@ -8,13 +8,13 @@ import { GlobalService } from '../global.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  url: string = 'https://techfusion-studio.com/safire/'
+  postObj: any = {};
+  returnObj: any = {};
 
   user_id: string;
   password: string;
-  postObj: any[] = [];
-  returnObj: any[] = [];
-  loginUrl: string = '';
-
+  
   constructor(
     private router: Router,
     public gs: GlobalService
@@ -24,20 +24,22 @@ export class LoginPage implements OnInit {
   }
 
   login = () => {
-    /*this.postObj['user_id'] = this.user_id;
+    this.postObj['user_id'] = this.user_id;
     this.postObj['password'] = this.password;
     const body = this.postObj;
-    this.gs.http(this.loginUrl, body).subscribe(
+    this.gs.http(this.url+'login/'+this.user_id+'/login', body).subscribe(
       res => {
         this.returnObj = res;
-        if(this.returnObj['status'] == 200){
-          this.router.navigate(['/tabs', 'tab1']);
+        if(this.returnObj['message']){
+          console.log('Success Login')
+          localStorage.user_id = this.user_id;
+          this.router.navigate(['userhome']);
+        }
+        else{
+          console.log('Error');
+          return;
         }
       }
-    )*/
-    
-    alert('ログイン処理');
-    // this.router.navigate(['/tabs', 'userhome']);
-    this.router.navigate(['userhome'])
+    )
   }
 }

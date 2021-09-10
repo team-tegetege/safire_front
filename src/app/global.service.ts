@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/x-www-form-urlencoded; charset=UTF-8'
+    'Content-Type':  'application/json; charset=UTF-8'
   })
 };
 

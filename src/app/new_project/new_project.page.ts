@@ -12,8 +12,10 @@ import * as marked from 'marked';
   styleUrls: ['new_project.page.scss']
 })
 export class NewProjectPage {
-  // fileProject: File = null;
-  // fileBackground: File = null;
+  url: string = 'https://techfusion-studio.com/safire/'
+  postObj: any = {};
+  returnObj: any = {};
+
   file: File = null;
   imgSrcProject: string | ArrayBuffer = "";
   imgSrcBackground: string | ArrayBuffer = "";
@@ -22,6 +24,18 @@ export class NewProjectPage {
 
   projectDetail: string = null;
   simplemde: SimpleMDE;
+
+  /** 登録する情報 **/
+  title: string;
+  thumbnail: string;
+  description: string;
+  user_id: string;
+  tag_list: string[] = [];
+  description_background: string;
+  thumbnail_background: string;
+  description_idea: string;
+  //thumbnail_idea
+
 
 
 
@@ -32,6 +46,8 @@ export class NewProjectPage {
   ) { }
 
   ngOnInit() {
+
+
     marked.setOptions({
       sanitize: true,
       sanitizer: escape,
@@ -71,11 +87,17 @@ export class NewProjectPage {
     });
   }
 
+
   toArticle = () => {
-    // const md = this.simplemde.value();
-    // this.projectDetail = marked(md);
-    // $('.project-detail').html(this.projectDetail);
-    this.router.navigate(['article']);
+    const checkBoxes = document.getElementsByName('progLang');
+    const checkedArray = (checkboxes: NodeList): HTMLElement[] => {
+      let resultArray: HTMLElement[] = Array.prototype.slice.call(checkboxes).filter(checkbox => checkbox.checked)
+  
+      return resultArray
+    }
+    console.log(checkedArray(checkBoxes))
+    
+    //this.router.navigate(['article']);
   }
 
 

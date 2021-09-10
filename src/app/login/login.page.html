@@ -32,13 +32,13 @@
                                 <div class="login-userid_title">
                                     <p>ユーザID</p>
                                 </div>
-                                <input type="text" value="" class="login-userid_input">
+                                <input type="text" value="" class="login-userid_input" name='user_id' [(ngModel)]='user_id'>
                             </div>
                             <div class="login-passwd">
                                 <div class="login-passwd_title">
                                     <p>パスワード</p>
                                 </div>
-                                <input type="password" value="" class="login-passwd_input">
+                                <input type="password" value="" class="login-passwd_input" name='password' [(ngModel)]='password'>
                             </div>
                             <div>
                                 <ion-button class="login-send" (click)="login()">ログイン</ion-button>

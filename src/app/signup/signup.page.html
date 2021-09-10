@@ -29,45 +29,45 @@
                                 <div class="signup-userid_title">
                                     <p>ユーザID</p>
                                 </div>
-                                <input type="text" value="" class="signup-userid_input">
+                                <input type="text" value="" class="signup-userid_input" name='user_id' [(ngModel)]='user_id'>
                             </div>
                             <div class="signup-passwd">
                                 <div class="signup-passwd_title">
                                     <p>パスワード</p>
                                 </div>
-                                <input type="password" value="" class="signup-passwd_input">
+                                <input type="password" value="" class="signup-passwd_input" name='password' [(ngModel)]='password'>
                             </div>
                             <div class="signup-passwd-confirm">
                                 <div class="signup-passwd-confirm_title">
                                     <p>パスワード（確認用）</p>
                                 </div>
-                                <input type="password" value="" class="signup-passwd-confirm_input">
+                                <input type="password" value="" class="signup-passwd-confirm_input" name="password_confirm" [(ngModel)]='password_confirm'>
                             </div>
                             <div class="signup-age">
                                 <div class="signup-age_title">
                                     <p>年齢</p>
                                 </div>
-                                <input type="number" value="" class="signup-age_input">
+                                <input type="number" value="" class="signup-age_input" name="age" [(ngModel)]='age'>
                             </div>
                             <div class="signup-gender">
                                 <div class="signup-gender_title">
                                     <p>性別</p>
                                 </div>
                                 <label class="signup-gender_radio">
-                                    <input type="radio" name="signup_gender_radio" value="man">男性
+                                    <input type="radio" name="signup_gender_radio" value="man" [(ngModel)]='gender' [checked]="gender=='man'">男性
                                 </label>
                                 <label class="signup-gender_radio">
-                                    <input type="radio" name="signup_gender_radio" value="woman">女性
+                                    <input type="radio" name="signup_gender_radio" value="woman" [(ngModel)]='gender' [checked]="gender=='woman'">女性
                                 </label>
                                 <label class="signup-gender_radio">
-                                    <input type="radio" name="signup_gender_radio" value="other" checked>その他
+                                    <input type="radio" name="signup_gender_radio" value="other" [(ngModel)]='gender' [checked]="gender=='other'" checked>その他
                                 </label>
                             </div>
                             <div class="signup-profile">
                                 <div class="signup-profile_title">
                                     <p>自己紹介</p>
                                 </div>
-                                <textarea class="signup-profile_input"></textarea>
+                                <textarea id='description' class="signup-profile_input" name="description" [(ngModel)]='description'></textarea>
                             </div>
 
                             <ion-button class="signup-send" (click)='signup()'>新規登録</ion-button>

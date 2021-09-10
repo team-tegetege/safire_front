@@ -25,7 +25,11 @@ export class HomePage implements OnInit {
     this.router.navigate(['login']);
   }
 
-  toArticle = () => {
+  toUserPage = () => {
+    this.router.navigate(['userpage']);
+  }
+
+  toArticlePage = () => {
     this.router.navigate(['article']);
   }
 }

@@ -49,50 +49,50 @@
                             <div class="project-form_tags_dialog_main">
                                 <h3>プログラミング言語</h3>
                                 <div class="project-form_tags_dialog_sub">
-                                    <input type="checkbox" name="#" value="python" id="python">
+                                    <input type="checkbox" name="progLang" value="python" id="python">
                                     <label for="python" class="label_tags">Python</label>
-                                    <input type="checkbox" name="#" value="html_css" id="html_css">
+                                    <input type="checkbox" name="progLang" value="html_css" id="html_css">
                                     <label for="html_css" class="label_tags">HTML/CSS</label>
-                                    <input type="checkbox" name="#" value="javascript" id="javascript">
+                                    <input type="checkbox" name="progLang" value="javascript" id="javascript">
                                     <label for="javascript" class="label_tags">JavaScript</label>
-                                    <input type="checkbox" name="#" value="C" id="C">
+                                    <input type="checkbox" name="progLang" value="C" id="C">
                                     <label for="C" class="label_tags">C/C++</label>
-                                    <input type="checkbox" name="#" value="C#" id="C#">
+                                    <input type="checkbox" name="progLang" value="C#" id="C#">
                                     <label for="C#" class="label_tags">C#</label>
-                                    <input type="checkbox" name="#" value="java" id="java">
+                                    <input type="checkbox" name="progLang" value="java" id="java">
                                     <label for="java" class="label_tags">Java</label>
-                                    <input type="checkbox" name="#" value="ruby" id="ruby">
+                                    <input type="checkbox" name="progLang" value="ruby" id="ruby">
                                     <label for="ruby" class="label_tags">Ruby</label>
-                                    <input type="checkbox" name="#" value="php" id="php">
+                                    <input type="checkbox" name="progLang" value="php" id="php">
                                     <label for="php" class="label_tags">PHP</label>
-                                    <input type="checkbox" name="#" value="sql" id="sql">
+                                    <input type="checkbox" name="progLang" value="sql" id="sql">
                                     <label for="sql" class="label_tags">SQL</label>
-                                    <input type="checkbox" name="#" value="swift" id="swift">
+                                    <input type="checkbox" name="progLang" value="swift" id="swift">
                                     <label for="swift" class="label_tags">Swift</label>
-                                    <input type="checkbox" name="#" value="go" id="go">
+                                    <input type="checkbox" name="progLang" value="go" id="go">
                                     <label for="go" class="label_tags">Go</label>
-                                    <input type="checkbox" name="#" value="kotlin" id="kotlin">
+                                    <input type="checkbox" name="progLang" value="kotlin" id="kotlin">
                                     <label for="kotlin" class="label_tags">Kotlin</label>
-                                    <input type="checkbox" name="#" value="r" id="r">
+                                    <input type="checkbox" name="progLang" value="r" id="r">
                                     <label for="r" class="label_tags">R</label>
-                                    <input type="checkbox" name="#" value="other_lang" id="other_lang">
+                                    <input type="checkbox" name="progLang" value="other_lang" id="other_lang">
                                     <label for="other_lang" class="label_tags">その他</label>
                                 </div>
                                 <h3>プロダクトのカテゴリ</h3>
                                 <div class="project-form_tags_dialog_sub">
-                                    <input type="checkbox" name="#" value="webapp" id="webapp">
+                                    <input type="checkbox" name="productCat" value="webapp" id="webapp">
                                     <label for="webapp" class="label_tags">Webアプリ</label>
-                                    <input type="checkbox" name="#" value="smartapp" id="smartapp">
+                                    <input type="checkbox" name="productCat" value="smartapp" id="smartapp">
                                     <label for="smartapp" class="label_tags">スマホアプリ</label>
-                                    <input type="checkbox" name="#" value="ml" id="ml">
+                                    <input type="checkbox" name="productCat" value="ml" id="ml">
                                     <label for="ml" class="label_tags">機械学習</label>
-                                    <input type="checkbox" name="#" value="ai" id="ai">
+                                    <input type="checkbox" name="productCat" value="ai" id="ai">
                                     <label for="ai" class="label_tags">人工知能</label>
-                                    <input type="checkbox" name="#" value="other_cate" id="other_cate">
+                                    <input type="checkbox" name="productCat" value="other_cate" id="other_cate">
                                     <label for="other_cate" class="label_tags">その他</label>
                                 </div>
                             </div>
-                            <button class="project-form_tags_dialog_finish" onclick="document.getElementById('dialog_tags').close()">完了</button>
+                            <ion-button class="project-form_tags_dialog_finish" onclick="document.getElementById('dialog_tags').close()">完了</ion-button>
                         </dialog>
                     </div>
                     <div class="project-form_main_thumbnails">
@@ -154,49 +154,11 @@
                 <textarea id="editor" name="name" rows="20" cols="40">
                 </textarea>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-                <!-- <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-                <script>
-                        var simplemde = new SimpleMDE({
-                            element: document.getElementById("editor"),
-                            toolbar: [
-                                "bold",
-                                "italic",
-                                "strikethrough",
-                                "heading",
-                                "code",
-                                "quote",
-                                "unordered-list",
-                                "ordered-list",
-                                "clean-block",
-                                "link",
-                                "image",
-                                "table",
-                                "horizontal-rule",
-                                "preview",
-                                "side-by-side",
-                                "fullscreen",
-                                "guide"
-                            ],
-                            spellChecker: true
-                        });
 
-                        simplemde.codemirror.on('refresh', function() {
-                            if (simplemde.isFullscreenActive()) {
-                                $('header').css('display', 'none');
-                            } else {
-                                $('header').css('display', 'block');
-                            }
-                        });
-                </script> -->
-                
-                <a (click)="toArticle()">
-                    <div class="btn-submission">
-                        <img src="/assets/img/pencil.png">
-                        <P>作品を投稿</P>
-                    </div>
-                </a>
-
-                <!-- <div class="project-detail"></div> -->
+                <div class="btn-submission" (click)="toArticle()">
+                    <img src="/assets/img/pencil.png">
+                    <P>作品を投稿</P>
+                </div>
             </article>
             <footer class="footer">
                 <div class="footer-body">

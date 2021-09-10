@@ -382,6 +382,9 @@ section {
     list-style: none;
     transform: .3s;
 }
+.project-card:hover {
+    cursor: pointer;
+}
 
 .project-card_thumnail {
     width: 100%;
