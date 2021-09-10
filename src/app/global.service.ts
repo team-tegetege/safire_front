@@ -8,6 +8,10 @@ const HTTP_OPTIONS = {
     'Content-Type':  'application/json; charset=UTF-8'
   })
 };
+const HTTP_OPTIONS_GET = {
+  headers: new HttpHeaders({
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +31,18 @@ export class GlobalService {
     let postUrl: string;
     postUrl = _postUrl;
     ret = this._http.post(postUrl, _trans_data, HTTP_OPTIONS)
+    .pipe(
+      timeout(5000),
+      catchError(this.handleError())
+    );
+    return ret;
+  }
+
+  public httpGet(_postUrl: string): Observable<any> {
+    let ret: Observable<any>;
+    let postUrl: string;
+    postUrl = _postUrl;
+    ret = this._http.get(postUrl, HTTP_OPTIONS_GET)
     .pipe(
       timeout(5000),
       catchError(this.handleError())
