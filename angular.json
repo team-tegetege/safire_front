@@ -32,7 +32,11 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss", "node_modules/simplemde/dist/simplemde.min.css"],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js", "node_modules/simplemde/dist/simplemde.min.js"],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/simplemde/dist/simplemde.min.js",
+              "node_modules/marked/marked.min.js"
+            ],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -98,7 +102,11 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": ["node_modules/simplemde/dist/simplemde.min.css"],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js", "node_modules/simplemde/dist/simplemde.min.js"],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/simplemde/dist/simplemde.min.js",
+              "node_module/marked/marked.min.js"
+            ],
             "assets": [
               {
                 "glob": "favicon.ico",

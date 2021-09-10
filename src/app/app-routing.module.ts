@@ -19,10 +19,10 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // },
+  {
+    path: '',
+    loadChildren: () => import('./slides/slides.module').then(m => m.SlidesPageModule)
+  },
   {
     path: 'userhome',
     loadChildren: () => import('./userhome/userhome.module').then( m => m.UserHomePageModule)
@@ -34,7 +34,39 @@ const routes: Routes = [
   {
     path: 'new_project',
     loadChildren: () => import('./new_project/new_project.module').then( m => m.NewProjectPageModule)
-  }
+  },
+  {
+    path: 'article',
+    loadChildren: () => import('./article/article.module').then( m => m.ArticlePageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  /*{
+    path: 'title',
+    loadChildren: () => import('./title/title.module').then( m => m.TitlePageModule)
+  },
+  {
+    path: 'member',
+    loadChildren: () => import('./member/member.module').then( m => m.MemberPageModule)
+  },
+  {
+    path: 'background',
+    loadChildren: () => import('./background/background.module').then( m => m.BackgroundPageModule)
+  },
+  {
+    path: 'project',
+    loadChildren: () => import('./project/project.module').then( m => m.ProjectPageModule)
+  },
+  {
+    path: 'points',
+    loadChildren: () => import('./points/points.module').then( m => m.PointsPageModule)
+  },
+  {
+    path: 'tech',
+    loadChildren: () => import('./tech/tech.module').then( m => m.TechPageModule)
+  }*/
 ];
 @NgModule({
   imports: [

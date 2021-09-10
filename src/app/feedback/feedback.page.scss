@@ -1,0 +1,70 @@
+ion-content {
+    --background: #aaaaaa;
+}
+
+.slides {
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+}
+.slides ion-card {
+    width: 16%;
+    height: 120px;
+    margin: auto;
+}
+
+.comments {
+    width: 80%;
+    height: 250px;
+    margin: 80px auto;
+    padding: 0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btn-group {
+    width: 100%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.btn-group ion-button {
+    width: 30%;
+    height: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.btn-filler {
+    --background: #deb887;
+    font-size: 23px;
+    font-weight: bolder;
+}
+
+.btn-end {
+    --background: #ffffff;
+    font-size: 23px;
+    --color: #deb887;
+    --border-color: #deb887;
+    --border-style: solid;
+    --border-width: 5px;
+    --border-radius: 5px;
+
+    font-weight: bolder;
+}
+
+.btn-group p {
+    font-size: 30px;
+    color: #ffffff;
+    margin: 0;
+}
+.btn-group span {
+    font-size: 50px;
+}

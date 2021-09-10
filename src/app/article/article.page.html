@@ -1,0 +1,111 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>article</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div>
+    <div>
+        <header class="header">
+            <div class="header-main">
+                <a href="">
+                    <div class="header-main_logo">
+                        <img src="/assets/img/safire_logo_header.png" alt="SaFireロゴ">
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <article class="project">
+            <div class="text_center"><h1 class="project_title">作品タイトル</h1></div>
+            <div class="display_flex">
+                <div class='btn-presentation'>
+                    <ion-button>発表練習</ion-button>
+                    <ion-button (click)="toPresentation()">発表モード</ion-button>
+                </div>
+            </div>
+            <section class="project_main">
+                <div class="project_main_content">
+                    <div class="project_description">
+                        <img src="/assets/img/ring_memo.jpeg">
+                        <h3>どんなサービス？</h3>
+                        <textarea id="project_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                    </div>
+                    <ul class="project_tags">
+                        <div class="display_flex">
+                            <div class="center">
+                                <p>タグ</p>
+                                <p>タグ1</p>
+                                <p>タグ2</p>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="project_thumbnails">
+                    <img id="thumbnails" src="/assets/img/project_img_none.png">
+                </div>
+            </section>
+
+            <hr color="#31apee">
+            
+            <h2 class="project_detail_title">作った背景</h2>
+            <section class="project_detail">
+                <div class="project_detail_content">
+                    <div class="project_detail_description">
+                        <img src="/assets/img/ring_memo.jpeg">
+                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                    </div>
+                </div>
+                <div class="project_detail_thumbnails">
+                    <img id="detail_background_img">
+                </div>
+            </section>
+
+            <div class="display_flex"><div class="center"><img class="icon_detail" src="/assets/img/icon_idea_point.png"><h2 class="project_detail_title">アイディアのポイント</h2></div></div>
+            <section class="project_detail">
+                <div class="project_detail_content">
+                    <div class="project_detail_description">
+                        <img src="/assets/img/ring_memo.jpeg">
+                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                    </div>
+                </div>
+                <div class="project_detail_thumbnails">
+                    <img id="detail_point_img">
+                </div>
+            </section>
+
+            <div class="display_flex"><div class="center"><img class="icon_detail" src="./img/icon_tech.png"><h2 class="project_detail_title">技術の工夫</h2></div></div>
+            <section class="project_detail">
+                <div class="project_detail_content">
+                    <div class="project_detail_description">
+                        <img src="/assets/img/ring_memo.jpeg">
+                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                    </div>
+                </div>
+                <div class="project_detail_thumbnails">
+                    <img id="detail_tech_img">
+                </div>
+            </section>
+
+            <h2 class="project_detail_title">作品の補足説明</h2>
+            <div class="note center">
+                <textarea id="note" name="name" rows="10" cols="20" placeholder="マークダウンの内容を記載するため、本来はtextareaではない"></textarea>
+            </div>
+        </article>
+
+
+        <footer class="footer">
+            <div class="footer-body">
+                <div class="footer-body_logo">
+                    <div class="display_flex">
+                        <img id="safire_mark" src="/assets/img/safire.png" alt="safireマーク">
+                        <img id="safire_logo" src="/assets/img/safire_logo.png" alt="SaFireロゴ">
+                    </div>
+                    <p>宝石である「あなたの挑戦」をさらに磨き上げる！</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+</ion-content>

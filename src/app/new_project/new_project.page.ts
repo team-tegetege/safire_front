@@ -1,6 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalService } from '../global.service';
+
 import * as $ from "jquery";
 import * as SimpleMDE from 'simplemde';
+import * as marked from 'marked';
 
 @Component({
   selector: 'app-new_project',
@@ -16,10 +20,23 @@ export class NewProjectPage {
   imgSrcPoint: string | ArrayBuffer = "";
   imgSrcTech: string | ArrayBuffer = "";
 
+  projectDetail: string = null;
+
+
+
   constructor(
+    private router: Router,
+    public gs: GlobalService
+
   ) { }
 
   ngOnInit() {
+    marked.setOptions({
+      sanitize: true,
+      sanitizer: escape,
+      breaks : true
+    });
+
     var simplemde = new SimpleMDE({
       element: document.getElementById("editor"),
       toolbar: [
@@ -41,7 +58,7 @@ export class NewProjectPage {
           "fullscreen",
           "guide"
       ],
-      spellChecker: true
+      spellChecker: false
     });
 
     simplemde.codemirror.on('refresh', function() {
@@ -52,6 +69,15 @@ export class NewProjectPage {
         }
     });
   }
+
+  toArticle = () => {
+    //const md = $('#editor').val;
+    //this.projectDetail = marked(md);
+    //console.log(typeof(md));
+    this.router.navigate(['article']);
+  }
+
+
 
   onChangeFileInputProject(event) {
     if (event.target.files.length === 0) {
