@@ -38,11 +38,11 @@ export class GlobalService {
     return ret;
   }
 
-  public httpGet(_postUrl: string): Observable<any> {
+  public httpGet(_getUrl: string): Observable<any> {
     let ret: Observable<any>;
-    let postUrl: string;
-    postUrl = _postUrl;
-    ret = this._http.get(postUrl, HTTP_OPTIONS_GET)
+    let getUrl: string;
+    getUrl = _getUrl;
+    ret = this._http.get(getUrl, HTTP_OPTIONS_GET)
     .pipe(
       timeout(5000),
       catchError(this.handleError())
