@@ -2,19 +2,19 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { MypagePage } from './mypage.page';
+import { UserpagePage } from './userpage.page';
 
-describe('MypagePage', () => {
-  let component: MypagePage;
-  let fixture: ComponentFixture<MypagePage>;
+describe('UserpagePage', () => {
+  let component: UserpagePage;
+  let fixture: ComponentFixture<UserpagePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [MypagePage],
+      declarations: [UserpagePage],
       imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MypagePage);
+    fixture = TestBed.createComponent(UserpagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

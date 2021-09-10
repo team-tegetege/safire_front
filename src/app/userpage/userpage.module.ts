@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MypagePage } from './mypage.page';
+import { UserpagePage } from './userpage.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { MypagePageRoutingModule } from './mypage-routing.module';
+import { UserpagePageRoutingModule } from './userpage-routing.module';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { MypagePageRoutingModule } from './mypage-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    MypagePageRoutingModule
+    UserpagePageRoutingModule
   ],
-  declarations: [MypagePage]
+  declarations: [UserpagePage]
 })
-export class MypagePageModule {}
+export class UserpagePageModule {}

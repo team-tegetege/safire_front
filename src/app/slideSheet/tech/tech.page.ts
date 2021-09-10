@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/global.service';
 
-import table from 'src/app/slide.config';
+// import table from 'src/app/slide.config';
 
 @Component({
   selector: 'app-tech',
@@ -10,8 +10,8 @@ import table from 'src/app/slide.config';
   styleUrls: ['./tech.page.scss'],
 })
 export class TechPage implements OnInit {
-  currentPage: string = 'tech';
-  currentPageIndex: any = table.indexOf(this.currentPage);
+  // currentPage: string = 'tech';
+  // currentPageIndex: any = table.indexOf(this.currentPage);
 
   constructor(
     private router: Router,
@@ -36,16 +36,10 @@ export class TechPage implements OnInit {
   
 
   toNextPage = () => {
-    if(this.currentPageIndex <= table.length) {
-      this.router.navigate(['./slides', table[this.currentPageIndex+1]]);
-      this.currentPageIndex = table.indexOf(this.currentPage);
-    }
+    // これが最後のスライド
   }
 
   toPrevPage = () => {
-    if(this.currentPageIndex > 0) {
-      this.router.navigate(['./slides', table[this.currentPageIndex-1]]);
-      this.currentPageIndex = table.indexOf(this.currentPage);
-    }
+    this.router.navigate(['/slides', 'points']);
   }
 }

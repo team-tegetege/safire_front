@@ -21,6 +21,7 @@ export class NewProjectPage {
   imgSrcTech: string | ArrayBuffer = "";
 
   projectDetail: string = null;
+  simplemde: SimpleMDE;
 
 
 
@@ -37,7 +38,7 @@ export class NewProjectPage {
       breaks : true
     });
 
-    var simplemde = new SimpleMDE({
+    this.simplemde = new SimpleMDE({
       element: document.getElementById("editor"),
       toolbar: [
           "bold",
@@ -61,8 +62,8 @@ export class NewProjectPage {
       spellChecker: false
     });
 
-    simplemde.codemirror.on('refresh', function() {
-        if (simplemde.isFullscreenActive()) {
+    this.simplemde.codemirror.on('refresh', () => {
+        if (this.simplemde.isFullscreenActive()) {
             $('header').css('display', 'none');
         } else {
             $('header').css('display', 'block');
@@ -71,9 +72,9 @@ export class NewProjectPage {
   }
 
   toArticle = () => {
-    //const md = $('#editor').val;
-    //this.projectDetail = marked(md);
-    //console.log(typeof(md));
+    // const md = this.simplemde.value();
+    // this.projectDetail = marked(md);
+    // $('.project-detail').html(this.projectDetail);
     this.router.navigate(['article']);
   }
 

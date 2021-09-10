@@ -28,8 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./userhome/userhome.module').then( m => m.UserHomePageModule)
   },
   {
-    path: 'mypage',
-    loadChildren: () => import('./mypage/mypage.module').then( m => m.MypagePageModule)
+    path: 'userpage',
+    loadChildren: () => import('./userpage/userpage.module').then( m => m.UserpagePageModule)
   },
   {
     path: 'new_project',

@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-mypage',
-  templateUrl: 'mypage.page.html',
-  styleUrls: ['mypage.page.scss']
+  selector: 'app-userpage',
+  templateUrl: 'userpage.page.html',
+  styleUrls: ['userpage.page.scss']
 })
-export class MypagePage {
+export class UserpagePage {
 
   constructor(
     private router: Router,

@@ -20,7 +20,7 @@ export class UserHomePage {
 
   toMypage = () => {
     // this.router.navigate(['/tabs', 'mypage']);
-    this.router.navigate(['mypage'])
+    this.router.navigate(['userpage'])
   }
 
   toNewProject = () => {

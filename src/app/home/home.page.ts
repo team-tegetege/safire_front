@@ -24,4 +24,8 @@ export class HomePage implements OnInit {
   login = () => {
     this.router.navigate(['login']);
   }
+
+  toArticle = () => {
+    this.router.navigate(['article']);
+  }
 }
