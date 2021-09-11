@@ -43,7 +43,7 @@
                     </ul>
                 </div>
                 <div class="project_thumbnails">
-                    <img id="thumbnails" [src]="item['thumbnail']">
+                    <img id="thumbnails" [src]="thumbnail">
                 </div>
             </section>
 
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_background_img" [src]="item['thumbnail_background']">
+                    <img id="detail_background_img" [src]='thumbnail_background'>
                 </div>
             </section>
 
@@ -71,11 +71,11 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_point_img" [src]="item['thumbnail_idea']">
+                    <img id="detail_point_img" [src]='thumbnail_idea'>
                 </div>
             </section>
 
-            <div class="display_flex"><div class="center"><img class="icon_detail" src="./img/icon_tech.png"><h2 class="project_detail_title">技術の工夫</h2></div></div>
+            <div class="display_flex"><div class="center"><img class="icon_detail" src="/assets/img/icon_tech.png"><h2 class="project_detail_title">技術の工夫</h2></div></div>
             <section class="project_detail">
                 <div class="project_detail_content">
                     <div class="project_detail_description">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_tech_img">
+                    <img id="detail_tech_img" [src]='thumbnail_technology'>
                 </div>
             </section>
 

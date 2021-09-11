@@ -38,7 +38,7 @@ export class ArticlePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    /*this.gs.httpGet(this.url+'project/'+localStorage.project_id).subscribe(
+    this.gs.httpGet(this.url+'project/'+localStorage.project_id).subscribe(
       res => {
         this.returnObj = res;
         console.log(this.returnObj['message']);
@@ -51,12 +51,12 @@ export class ArticlePage implements OnInit {
           return;
         }
       }
-    )*/
+    )
   }
 
-  setInfo = (res) => {
+  setInfo = (res: any) => {
     this.title = res['title']
-    this.thumbnail = res['tumbnail']
+    this.thumbnail = res['thumbnail']
     this.description = res['description']
     this.user_id = res['user_id']
     this.tag_list = res['tag_list']
