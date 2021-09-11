@@ -44,7 +44,7 @@ export class NewProjectPage {
   appendix: string;
   color: string;
 
-  interval: any
+  interval: any[] = []
   loading: any
 
   constructor(
@@ -265,7 +265,18 @@ export class NewProjectPage {
     }
   }
 
-  async getKeyPhrase() {
+  async keyPhrases() {
+    this.loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 120000
+    });
+    await this.loading.present();
+    this.getKeyPhrase(this.description_background, 0)
+  }
+
+  async getKeyPhrase(text: string, times: number ) {
+
     /*
     const key = '06adf4e018174acca54b1d98b5a633e9';
     const endpoint = 'https://safire.cognitiveservices.azure.com/';
@@ -284,15 +295,9 @@ export class NewProjectPage {
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
     });*/
-    const body = {
+    let body = {
       "analysisInput": {
-        "documents": [
-          {
-            "language": "ja",
-            "id": "1",  // project_id
-            "text": "チームの2人は熊本と鹿児島の出身． 車社会であったこともあり一人運転の『眠気』や『辛さ』に着目． 乗車人数が1人の割合は平日73.8%，休日52.9%． 正直しんどい人も多いのでは？ 一人運転の『つまらなさ』やそれに伴う『漫然運転』といった問題を解決するサービスを開発したい!!"  // description
-          }
-        ]
+        "documents": []
       },
       "tasks": {
         "extractiveSummarizationTasks": [
@@ -306,27 +311,39 @@ export class NewProjectPage {
         ]
       }
     }
-    this.loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 120000
-    });
-    await this.loading.present();
+    body["analysisInput"]["documents"].push({
+      "language": "ja",
+      "id": "1",  // project_id（後で書き換える）
+      "text": `${text}`  // description
+    })
     this.gs.httpAbst('https://safire.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/analyze', body).subscribe(
       res => {
         console.log(res.headers.get('operation-location'))
-        this.interval = setInterval(() => {
+        this.interval[times] = setInterval(() => {
           this.gs.httpGetAbst(res.headers.get('operation-location')).subscribe(
             res => {
+              console.log(res)
               // listの中の'text'を採用する
               if (res["status"] == "succeeded") {
-                console.log(res["tasks"]["extractiveSummarizationTasks"][0]["results"]["documents"][0]["sentences"])
-                this.loading.dismiss()
-                clearInterval(this.interval)
+                const abstract = res["tasks"]["extractiveSummarizationTasks"][0]["results"]["documents"][0]["sentences"]
+                if (times == 0) {
+                  this.postObj['abstract_background'] = abstract;
+                  this.getKeyPhrase(this.description_idea, 1)
+                }
+                else if (times == 1) {
+                  this.postObj['abstract_idea'] = abstract;
+                  this.getKeyPhrase(this.description_technology, 2)
+                }
+                else if (times == 2) {
+                  this.postObj['abstract_technology'] = abstract;
+                  this.postProject()
+                  this.loading.dismiss()
+                }
+                clearInterval(this.interval[times])
               }
             }
           )
-        }, 1000)
+        }, 3000)
       }
     )
   }
