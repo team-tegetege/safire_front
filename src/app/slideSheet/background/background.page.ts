@@ -12,6 +12,12 @@ export class BackgroundPage implements OnInit {
   // currentPage: string = 'background';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_background"]
+  abstract1: string = JSON.parse(localStorage.abstract)["abstract_list"][0][0]
+  abstract2: string = JSON.parse(localStorage.abstract)["abstract_list"][0][1]
+  abstract3: string = JSON.parse(localStorage.abstract)["abstract_list"][0][2]
+  abstract4: string = JSON.parse(localStorage.abstract)["abstract_list"][0][3]
+
   constructor(
     private router: Router,
     public gs: GlobalService

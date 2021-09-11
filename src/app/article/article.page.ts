@@ -52,6 +52,12 @@ export class ArticlePage implements OnInit {
         }
       }
     )
+    this.gs.httpGet("https://techfusion-studio.com/safire/presentation/"+localStorage.project_id).subscribe(
+      res => {
+        localStorage.abstract = JSON.stringify(res)
+        console.log(JSON.parse(localStorage.abstract)["title"])
+      }
+    )
   }
 
   setInfo = (res: any) => {
@@ -78,7 +84,7 @@ export class ArticlePage implements OnInit {
   }
 
   toTraining = () => {
-
+    this.router.navigate(['/feedback']);
   }
 
 }

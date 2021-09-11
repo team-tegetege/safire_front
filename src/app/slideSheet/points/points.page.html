@@ -5,6 +5,7 @@
 </ion-header> -->
 
 <ion-content [fullscreen]=true>
+  <!--
   <div class="div_main">
     <h1>アイディアのポイント</h1>
     <p>
@@ -14,4 +15,23 @@
   <div class="div_img">
     <img src="/assets/img/project_img_none.png">
   </div>
+-->
+<div class="div_main">
+  <h1>アイディアのポイント</h1>
+  <p>
+    {{abstract1}}
+  </p>
+  <p>
+    {{abstract2}}
+  </p>
+  <p>
+    {{abstract3}}
+  </p>
+  <p>
+    {{abstract4}}
+  </p>
+</div>
+<div class="div_img">
+  <img [src]="thumbnail">
+</div>
 </ion-content>
