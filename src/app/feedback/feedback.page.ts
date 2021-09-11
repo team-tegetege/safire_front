@@ -18,6 +18,8 @@ export class FeedbackPage implements OnInit {
 
   speechFlag: boolean = true
 
+  return: any = {}
+
   constructor(
     private router: Router,
     public gs: GlobalService
@@ -26,6 +28,12 @@ export class FeedbackPage implements OnInit {
 
   ngOnInit() {
     // this.getTokenOrRefresh()
+    this.gs.httpGet("https://techfusion-studio.com/safire/presentation/11").subscribe(
+      res => {
+        this.return = res
+        console.log(res)
+      }
+    )
   }
 
   startSpeech = () => {
