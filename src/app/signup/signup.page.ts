@@ -37,10 +37,9 @@ export class SignupPage implements OnInit {
     this.postObj['gender'] = this.gender;
     
     const element: HTMLInputElement = <HTMLInputElement>document.getElementById('description')
-    this.postObj['description'] = element.value//this.descripton;
+    this.postObj['description'] = element.value
 
     const body = this.postObj;
-    console.log(body)
 
     this.gs.http(this.url+'signup', body).subscribe(
       res => {

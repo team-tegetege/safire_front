@@ -28,12 +28,13 @@ export class UserpagePage {
   getUserInfo = () => {
     this.user_id = localStorage.user_id;
     const body = {}//this.postObj;
-    this.gs.http(this.url+'mypage/'+this.user_id, body).subscribe(
+    this.gs.httpGet(this.url+'mypage/'+this.user_id).subscribe(
       res => {
         this.returnObj = res;
         if(this.returnObj['message']){
+          console.log(this.returnObj)
           console.log('Success Get User Info');
-          this.description = this.returnObj['desxription'];
+          this.description = this.returnObj['description'];
           //プロジェクト一覧
         }
         else{
