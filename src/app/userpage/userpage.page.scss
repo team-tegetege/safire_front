@@ -288,6 +288,8 @@ section {
 
 .projects {
     width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .projects-list {
@@ -309,6 +311,9 @@ section {
     box-shadow: 5px 5px 15px #bbbbbb, -5px -5px 15px #eeeeee;
     list-style: none;
     transform: .3s;
+}
+.project-card:hover{
+    cursor: pointer;
 }
 
 .project-card_thumnail {

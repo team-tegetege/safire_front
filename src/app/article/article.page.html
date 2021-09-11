@@ -18,7 +18,7 @@
         </header>
 
         <article class="project">
-            <div class="text_center"><h1 class="project_title">作品タイトル</h1></div>
+            <div class="text_center"><h1 class="project_title">{{title}}</h1></div>
             <div class="display_flex">
                 <div class='btn-presentation'>
                     <ion-button>発表練習</ion-button>
@@ -30,20 +30,20 @@
                     <div class="project_description">
                         <img src="/assets/img/ring_memo.jpeg">
                         <h3>どんなサービス？</h3>
-                        <textarea id="project_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                        <textarea id="project_description" readonly>{{description}}</textarea>
                     </div>
                     <ul class="project_tags">
                         <div class="display_flex">
                             <div class="center">
-                                <p>タグ</p>
-                                <p>タグ1</p>
-                                <p>タグ2</p>
+                                <element *ngFor="let tag of tag_list">
+                                    <p>{{tag}}</p><br>
+                                </element>
                             </div>
                         </div>
                     </ul>
                 </div>
                 <div class="project_thumbnails">
-                    <img id="thumbnails" src="/assets/img/project_img_none.png">
+                    <img id="thumbnails" [src]="item['thumbnail']">
                 </div>
             </section>
 
@@ -54,11 +54,11 @@
                 <div class="project_detail_content">
                     <div class="project_detail_description">
                         <img src="/assets/img/ring_memo.jpeg">
-                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                        <textarea id="project_detail_description" readonly>{{description_background}}</textarea>
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_background_img">
+                    <img id="detail_background_img" [src]="item['thumbnail_background']">
                 </div>
             </section>
 
@@ -67,11 +67,11 @@
                 <div class="project_detail_content">
                     <div class="project_detail_description">
                         <img src="/assets/img/ring_memo.jpeg">
-                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                        <textarea id="project_detail_description" readonly>{{description_idea}}</textarea>
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_point_img">
+                    <img id="detail_point_img" [src]="item['thumbnail_idea']">
                 </div>
             </section>
 
@@ -80,7 +80,7 @@
                 <div class="project_detail_content">
                     <div class="project_detail_description">
                         <img src="/assets/img/ring_memo.jpeg">
-                        <textarea id="project_detail_description" readonly>ここがすごい！&NewLine;とにかくすごい！</textarea>
+                        <textarea id="project_detail_description" readonly>{{description_technology}}</textarea>
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
@@ -90,7 +90,7 @@
 
             <h2 class="project_detail_title">作品の補足説明</h2>
             <div class="note center">
-                <textarea id="note" name="name" rows="10" cols="20" placeholder="マークダウンの内容を記載するため、本来はtextareaではない"></textarea>
+                <textarea id="note"></textarea>
             </div>
         </article>
 

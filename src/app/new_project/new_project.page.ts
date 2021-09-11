@@ -110,20 +110,19 @@ export class NewProjectPage {
     this.postObj['appendix'] = this.appendix;
     this.postObj['color'] = this.color;
     const body = this.postObj;
-    console.log(body)
 
     this.gs.http(this.url+'project', body).subscribe(
       res => {
         this.returnObj = res;
         console.log(this.returnObj['message']);
-        /*if(this.returnObj['message']){
+        if(this.returnObj['message']){
           console.log('Success: Post Project')
-          this.router.navigate(['article']);
+          this.router.navigate(['userpage']);
         }
         else {
           console.log('Error');
           return;
-        }*/
+        }
       }
     )
   }
