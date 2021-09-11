@@ -135,7 +135,7 @@
                 <section class="project-form_detail">
                     <div class="project-form_detail_content">
                         <div class="project-form_detail_description">
-                            <textarea id="background_description" maxlength="200" placeholder="説明文"></textarea>
+                            <textarea id="background_description" [(ngModel)]="description_background" name="description_background" maxlength="200" placeholder="説明文"></textarea>
                         </div>
                     </div>
                     <div class="project-form_detail_thumbnails">
@@ -150,7 +150,7 @@
                     <section class="project-form_detail">
                         <div class="project-form_detail_content">
                             <div class="project-form_detail_description">
-                                <textarea id="point_description" maxlength="200" placeholder="説明文"></textarea>
+                                <textarea id="point_description" [(ngModel)]="description_idea" name="description_idea" maxlength="200" placeholder="説明文"></textarea>
                             </div>
                         </div>
                         <div class="project-form_detail_thumbnails">
@@ -165,7 +165,7 @@
                 <section class="project-form_detail">
                     <div class="project-form_detail_content">
                         <div class="project-form_detail_description">
-                            <textarea id="tech_description" maxlength="200" placeholder="説明文"></textarea>
+                            <textarea id="tech_description" [(ngModel)]="description_technology" name="description_technology" maxlength="200" placeholder="説明文"></textarea>
                         </div>
                     </div>
                     <div class="project-form_detail_thumbnails">
@@ -181,7 +181,7 @@
                 </textarea>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
-                <div class="btn-submission" (click)="postProject()">
+                <div class="btn-submission" (click)="keyPhrases()">
                     <img src="/assets/img/pencil.png">
                     <P>作品を投稿</P>
                 </div>
