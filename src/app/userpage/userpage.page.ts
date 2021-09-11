@@ -32,8 +32,9 @@ export class UserpagePage {
       res => {
         this.returnObj = res;
         if(this.returnObj['message']){
+          console.log(this.returnObj)
           console.log('Success Get User Info');
-          this.description = this.returnObj['desxription'];
+          this.description = this.returnObj['description'];
           //プロジェクト一覧
         }
         else{
