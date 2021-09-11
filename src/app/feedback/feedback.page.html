@@ -12,12 +12,25 @@
     <ion-card>アイディアのポイント</ion-card>
     <ion-card>技術の工夫</ion-card>
   </div>
+  <!--
   <div class="comments">
     <p>コメント</p>
+    <ion-textarea></ion-textarea>
+  </div>
+  -->
+  <div class="comments">
+    <ion-item class="comments_inner">
+      <ion-label position="floating">{{status}}</ion-label>
+      <ion-textarea rows="20" [value]="text"></ion-textarea>
+    </ion-item>
   </div>
   <div class="btn-group">
-    <ion-button class="btn-filler">フィラーを数える</ion-button>
+    <ion-button class="btn-filler" (click)="startSpeech()">読み上げ開始</ion-button>
+    <ion-button class="btn-end" (click)="stopSpeech()">読み上げ停止</ion-button>
+  </div>
+  <div class="btn-group">
+    <ion-button class="btn-filler" (click)="countFiller()">フィラーを数える</ion-button>
     <p><span>X</span>回</p>
-    <ion-button class="btn-end">終了</ion-button>
+    <ion-button class="btn-end">練習終了</ion-button>
   </div>
 </ion-content>

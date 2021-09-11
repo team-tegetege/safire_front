@@ -26,10 +26,14 @@ ion-content {
     align-items: center;
     border-radius: 10px;
 }
+.comments_inner {
+    width: 100%;
+    height: 100%;
+}
 
 .btn-group {
     width: 100%;
-    margin: 100px auto;
+    margin: 10px auto;
     display: flex;
     justify-content: center;
     
