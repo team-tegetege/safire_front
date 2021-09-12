@@ -254,8 +254,13 @@ article {
 
 .project_tags {
     margin-top: 0px;
+    flex-wrap: wrap;
 }
 
+.tags {
+    background: chartreuse;
+
+}
 /*.project-form_detail_background_img_upload {
     width: 271px;
     height: 186px;

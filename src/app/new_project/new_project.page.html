@@ -105,9 +105,10 @@
                             </div>
                         </ul>
                         <dialog class="project-form_color_dialog" id="dialog_color">
-                            <h2 class="project-form_color_dialog_title">メインカラー</h2>
+                            <h2 class="project-form_color_dialog_title">プロジェクトのタグ</h2>
                             <hr color="#136fff">
                             <div class="project-form_color_dialog_main">
+                                <h3>メインカラー</h3>
                                 <div class="project-form_color_dialog_sub">
                                     <input type="radio" name="color" value="red" id="red" [(ngModel)]='color' [checked]="color=='red'">
                                     <label for="red" class="label_color">赤色</label>
@@ -134,7 +135,7 @@
                 <section class="project-form_detail">
                     <div class="project-form_detail_content">
                         <div class="project-form_detail_description">
-                            <textarea id="background_description" [(ngModel)]="description_background" name="description_background" maxlength="200" placeholder="説明文"></textarea>
+                            <textarea id="background_description" maxlength="200" placeholder="説明文"></textarea>
                         </div>
                     </div>
                     <div class="project-form_detail_thumbnails">
@@ -146,41 +147,41 @@
                 </section>
 
                 <div class="display_flex"><div class="center"><img class="icon_detail" src="/assets/img/icon_idea_point.png"><h2 class="project-form_detail_title">アイディアのポイント</h2></div></div>
-                    <section class="project-form_detail">
-                        <div class="project-form_detail_content">
-                            <div class="project-form_detail_description">
-                                <textarea id="point_description" [(ngModel)]="description_idea" name="description_idea" maxlength="200" placeholder="説明文"></textarea>
-                            </div>
+                <section class="project-form_detail">
+                    <div class="project-form_detail_content">
+                        <div class="project-form_detail_description">
+                            <textarea id="point_description" maxlength="200" placeholder="説明文"></textarea>
                         </div>
-                        <div class="project-form_detail_thumbnails">
-                            <label>
-                                <img id="detail_point_img" class="project-form_detail_thumbnails_upload" [src]="imgSrcPoint" alt="">
-                                <input id="detail_point_img_input" type="file" accept="image/*"  (change)="onChangeFileInputPoint($event)">
-                            </label>
-                        </div>
-                    </section>
+                    </div>
+                    <div class="project-form_detail_thumbnails">
+                        <label>
+                            <img id="detail_point_img" class="project-form_detail_thumbnails_upload" [src]="imgSrcPoint" alt="">
+                            <input id="detail_point_img_input" type="file" accept="image/*"  (change)="onChangeFileInputPoint($event)">
+                        </label>
+                    </div>
+                </section>
 
                 <div class="display_flex"><div class="center"><img class="icon_detail" src="/assets/img/icon_tech.png"><h2 class="project-form_detail_title">技術の工夫</h2></div></div>
                 <section class="project-form_detail">
                     <div class="project-form_detail_content">
                         <div class="project-form_detail_description">
-                            <textarea id="tech_description" [(ngModel)]="description_technology" name="description_technology" maxlength="200" placeholder="説明文"></textarea>
+                            <textarea id="tech_description" maxlength="200" placeholder="説明文"></textarea>
                         </div>
                     </div>
                     <div class="project-form_detail_thumbnails">
                         <label>
-                            <img id="detail_tech_img" class="project-form_detaisl_thumbnails_upload" [src]="imgSrcTech" alt="">
+                            <img id="detail_tech_img" class="project-form_detail_thumbnails_upload" [src]="imgSrcTech" alt="">
                             <input id="detail_tech_img_input" type="file" accept="image/*"  (change)="onChangeFileInputTech($event)">
                         </label>
                     </div>
                 </section>
 
                 <h2 class="project-form_detail_title">作品の補足説明</h2>
-                <textarea id="editor">
+                <textarea id="editor" name="name" rows="20" cols="40">
                 </textarea>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
-                <div class="btn-submission" (click)="keyPhrases()">
+                <div class="btn-submission" (click)="postProject()">
                     <img src="/assets/img/pencil.png">
                     <P>作品を投稿</P>
                 </div>

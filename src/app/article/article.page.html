@@ -32,15 +32,15 @@
                         <h3>どんなサービス？</h3>
                         <textarea id="project_description" readonly>{{description}}</textarea>
                     </div>
-                    <ul class="project_tags">
+                    <div class="project_tags">
                         <div class="display_flex">
                             <div class="center">
                                 <element *ngFor="let tag of tag_list">
-                                    <p>{{tag}}</p><br>
+                                    <div class="tags"><p>{{tag}}</p></div>
                                 </element>
                             </div>
                         </div>
-                    </ul>
+                    </div>
                 </div>
                 <div class="project_thumbnails">
                     <img id="thumbnails" [src]="thumbnail">
@@ -84,13 +84,13 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_tech_img" [src]='thumbnail_technology'>
+                    <img id="detail_tech_img" [src]="thumbnail_technology">
                 </div>
             </section>
 
             <h2 class="project_detail_title">作品の補足説明</h2>
             <div class="note center">
-                <textarea id="note"></textarea>
+                <textarea id="note" rows="20" cols="40"></textarea>
             </div>
         </article>
 

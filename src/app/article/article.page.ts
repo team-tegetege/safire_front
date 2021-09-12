@@ -68,6 +68,8 @@ export class ArticlePage implements OnInit {
     this.thumbnail_technology = res['thumbnail_technology']
     this.appendix = res['appendix']
     this.color = res['color']
+    console.log(this.tag_list)
+    console.log(this.thumbnail_technology)
 
     $('#note').html(marked(this.appendix));
   }
