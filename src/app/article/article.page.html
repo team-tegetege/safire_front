@@ -35,9 +35,9 @@
                     <ul class="project_tags">
                         <div class="display_flex">
                             <div class="center">
-                                <element *ngFor="let tag of tag_list">
+                                <div *ngFor="let tag of tag_list">
                                     <p>{{tag}}</p><br>
-                                </element>
+                                </div>
                             </div>
                         </div>
                     </ul>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_background_img" [src]='thumbnail_background'>
+                    <img id="detail_background_img" [src]="thumbnail_background">
                 </div>
             </section>
 
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_point_img" [src]='thumbnail_idea'>
+                    <img id="detail_point_img" [src]="thumbnail_idea">
                 </div>
             </section>
 
@@ -84,13 +84,12 @@
                     </div>
                 </div>
                 <div class="project_detail_thumbnails">
-                    <img id="detail_tech_img" [src]='thumbnail_technology'>
+                    <img id="detail_tech_img" [src]="thumbnail_technology">
                 </div>
             </section>
 
             <h2 class="project_detail_title">作品の補足説明</h2>
-            <div class="note center">
-                <textarea id="note"></textarea>
+            <div class="note center" id="appendix">
             </div>
         </article>
 

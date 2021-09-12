@@ -108,6 +108,7 @@ section {
 .header-main_logo img {
     height: 30%;
     width: 30%;
+    cursor: pointer;
 }
 
 .header-main_menu {
@@ -360,6 +361,8 @@ section {
 
 .projects {
     width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .projects-list {

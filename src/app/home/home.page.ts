@@ -9,12 +9,23 @@ import { GlobalService } from '../global.service';
 })
 export class HomePage implements OnInit {
 
+  url: string = 'https://techfusion-studio.com/safire/'
+  postObj: any = {};
+  returnObj: any = {};
+  project_list: any;
+
   constructor(
     private router: Router,
     public gs: GlobalService
   ) { }
 
   ngOnInit() {
+    this.gs.httpGet(this.url+'home').subscribe(
+      res => {
+        this.returnObj = res;
+        this.project_list = this.returnObj['project_list'];
+      }
+    )
   }
 
   signup = () => {
@@ -29,7 +40,8 @@ export class HomePage implements OnInit {
     this.router.navigate(['userpage']);
   }
 
-  toArticlePage = () => {
+  toArticlePage = (id: any) => {
+    localStorage.project_id = id;
     this.router.navigate(['article']);
   }
 }

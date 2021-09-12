@@ -13,6 +13,7 @@ export class UserHomePage {
   url: string = 'https://techfusion-studio.com/safire/'
   postObj: any = {};
   returnObj: any = {};
+  project_list: any;
 
   constructor(
     private router: Router,
@@ -20,13 +21,17 @@ export class UserHomePage {
   ) {}
 
   ngOnInit(){
-    this.getHomeInfo();
-  }
+    this.gs.httpGet(this.url+'home').subscribe(
+      res => {
+        this.returnObj = res;
+        this.project_list = this.returnObj['project_list'];
+      }
+    )
 
-  getHomeInfo = () => {
   }
 
   logout = () => {
+    localStorage.clear();
     this.router.navigate(['']);
   }
 
@@ -42,7 +47,13 @@ export class UserHomePage {
     this.router.navigate(['userpage']);
   }
 
-  toArticlePage = () => {
+  toArticlePage = (id: any) => {
+    localStorage.project_id = id;
     this.router.navigate(['article']);
+  }
+
+  toUserHome = () => {
+    localStorage.removeItem('project_id');
+    this.router.navigate(['userhome']);
   }
 }
