@@ -11,8 +11,9 @@ export class HomePage implements OnInit {
   url: string = 'https://techfusion-studio.com/safire/'
   postObj: any = {};
   returnObj: any = {};
-
+  
   project_list: any[];
+
   img: string;
 
   constructor(

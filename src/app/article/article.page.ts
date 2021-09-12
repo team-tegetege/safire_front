@@ -68,16 +68,21 @@ export class ArticlePage implements OnInit {
     this.tag_list = res['tag_list']
     this.description_background = res['description_background']
     this.thumbnail_background = res['thumbnail_background']
+    $('#detail_background_img').css('content', 'none');
     this.description_idea = res['description_idea']
     this.thumbnail_idea = res['thumbnail_idea']
+    $('#detail_idea_img').css('content', 'none');
     this.description_technology = res['description_technology']
     this.thumbnail_technology = res['thumbnail_technology']
+    $('#detail_tech_img').css('content', 'none');
     this.appendix = res['appendix']
     this.color = res['color']
     console.log(this.tag_list)
     console.log(this.thumbnail_technology)
 
-    $('#note').html(marked(this.appendix));
+    const appendix_html = marked(this.appendix)
+
+    $('#appendix').html(appendix_html);
   }
 
   toPresentation = () => {

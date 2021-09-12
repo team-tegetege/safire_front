@@ -12,8 +12,8 @@ export class UserHomePage {
   url: string = 'https://techfusion-studio.com/safire/'
   postObj: any = {};
   returnObj: any = {};
-
-  project_list: any[];
+  project_list: any;
+  
   img: string;
 
   constructor(
@@ -34,6 +34,7 @@ export class UserHomePage {
   }
 
   logout = () => {
+    localStorage.clear();
     this.router.navigate(['']);
   }
 
@@ -49,7 +50,13 @@ export class UserHomePage {
     this.router.navigate(['userpage']);
   }
 
-  toArticlePage = () => {
+  toArticlePage = (id: any) => {
+    localStorage.project_id = id;
     this.router.navigate(['article']);
+  }
+
+  toUserHome = () => {
+    localStorage.removeItem('project_id');
+    this.router.navigate(['userhome']);
   }
 }
