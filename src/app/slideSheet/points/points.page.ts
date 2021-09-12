@@ -13,6 +13,12 @@ export class PointsPage implements OnInit {
   // currentPage: string = 'tech';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_idea"]
+  abstract1: string = JSON.parse(localStorage.abstract)["abstract_list"][1][0]
+  abstract2: string = JSON.parse(localStorage.abstract)["abstract_list"][1][1]
+  abstract3: string = JSON.parse(localStorage.abstract)["abstract_list"][1][2]
+  abstract4: string = JSON.parse(localStorage.abstract)["abstract_list"][1][3]
+
   constructor(
     private router: Router,
     public gs: GlobalService

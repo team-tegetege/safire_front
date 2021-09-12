@@ -13,6 +13,9 @@ export class TitlePage implements OnInit {
   // currentPage: string = 'title';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
+  title: string = JSON.parse(localStorage.abstract)["title"]
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail"]
+
   constructor(
     private router: Router,
     public gs: GlobalService

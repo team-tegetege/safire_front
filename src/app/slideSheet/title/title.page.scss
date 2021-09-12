@@ -10,6 +10,10 @@
     font-size: 60px;
 }
 
+.image_container {
+    width: 35%;
+    margin: 0 auto;
+}
 .div_other {
     width: 100%;
     height: 60%;
@@ -17,9 +21,11 @@
 }
 .div_other img {
     position: absolute;
-    margin: 50px;
-    right: 100px;
+    // margin: 50px;
+    // right: 100px;
     border: 15px solid #000000;
+    height: 50%;
+    margin: 0 auto;
 }
 
 .display_block {
