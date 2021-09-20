@@ -161,7 +161,7 @@ section {
 
 .signup-main_card {
     width: 700px;
-    height: 980px;
+    height: 1080px;
     padding: 40px 40px 40px 40px;
     position: relative;
     text-align: center;
@@ -286,6 +286,27 @@ section {
     margin: 0 15px;
 }
 .signup-gender_radio input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 2px;
+}
+
+.signup-school_grade {
+    margin: 20px 20px 0px 20px;
+}
+
+.signup-school_grade_title p {
+    margin-bottom: 5px;
+    font-size: 25px;
+    text-align: left;
+}
+
+.signup-school_grade_radio{
+    font-size: 20px;
+    margin: 0 10px;
+}
+.signup-school_grade_radio input[type="radio"] {
     width: 20px;
     height: 20px;
     position: relative;

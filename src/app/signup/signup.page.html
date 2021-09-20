@@ -60,7 +60,30 @@
                                     <input type="radio" name="signup_gender_radio" value="woman" [(ngModel)]='gender' [checked]="gender=='woman'">女性
                                 </label>
                                 <label class="signup-gender_radio">
-                                    <input type="radio" name="signup_gender_radio" value="other" [(ngModel)]='gender' [checked]="gender=='other'" checked>その他
+                                    <input type="radio" name="signup_gender_radio" value="others" [(ngModel)]='gender' [checked]="gender=='others'" checked>その他
+                                </label>
+                            </div>
+                            <div class="signup-school_grade">
+                                <div class="signup-school_grade_title">
+                                    <p>学校区分</p>
+                                </div>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="小学校" [(ngModel)]='school_grade' [checked]="school_grade=='小学校'">小学校
+                                </label>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="中学校" [(ngModel)]='school_grade' [checked]="school_grade=='中学校'">中学校
+                                </label>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="高校" [(ngModel)]='school_grade' [checked]="school_grade=='高校'" checked>高校
+                                </label>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="高専" [(ngModel)]='school_grade' [checked]="school_grade=='高専'" checked>高専
+                                </label>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="大学" [(ngModel)]='school_grade' [checked]="school_grade=='大学'" checked>大学
+                                </label>
+                                <label class="signup-school_grade_radio">
+                                    <input type="radio" name="signup_school_grade_radio" value="社会人" [(ngModel)]='school_grade' [checked]="school_grade=='社会人'" checked>社会人
                                 </label>
                             </div>
                             <div class="signup-profile">
