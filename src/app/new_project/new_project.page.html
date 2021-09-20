@@ -40,6 +40,13 @@
                                     <button onclick="document.getElementById('dialog_tags').showModal()">
                                         <img src="/assets/img/btn_plus.png" alt="タグ追加">
                                     </button>
+                                    <div>
+                                        <ng-container *ngFor="let tag of allCheckBoxes">
+                                            <ion-chip *ngIf="tag.checked">
+                                                <ion-label>{{tag.value}}</ion-label>
+                                            </ion-chip>
+                                        </ng-container>
+                                    </div>
                                 </div>
                             </div>
                         </ul>
@@ -97,15 +104,20 @@
                         <ul class="project-form_main_content_color">
                             <div class="display_flex">
                                 <div class="center">
-                                    <p>タグ</p>
+                                    <p>メインカラー</p>
                                     <button onclick="document.getElementById('dialog_color').showModal()">
                                         <img src="/assets/img/btn_plus.png" alt="タグ追加">
                                     </button>
+                                    <div>
+                                        <ion-chip>
+                                            <ion-label>{{color}}</ion-label>
+                                        </ion-chip>
+                                    </div>
                                 </div>
                             </div>
                         </ul>
                         <dialog class="project-form_color_dialog" id="dialog_color">
-                            <h2 class="project-form_color_dialog_title">プロジェクトのタグ</h2>
+                            <h2 class="project-form_color_dialog_title">メインカラー</h2>
                             <hr color="#136fff">
                             <div class="project-form_color_dialog_main">
                                 <h3>メインカラー</h3>
@@ -181,7 +193,7 @@
                 </textarea>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
-                <div class="btn-submission" (click)="postProject()">
+                <div class="btn-submission" (click)="keyPhrases()">
                     <img src="/assets/img/pencil.png">
                     <P>作品を投稿</P>
                 </div>

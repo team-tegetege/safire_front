@@ -30,6 +30,9 @@ export class ArticlePage implements OnInit {
   appendix: string;
   color: string;
 
+  owner_flag: boolean;
+
+  project_id: string
 
   constructor(
     private router: Router,
@@ -61,19 +64,21 @@ export class ArticlePage implements OnInit {
   }
 
   setInfo = (res: any) => {
+    this.project_id = res['id']
     this.title = res['title']
     this.thumbnail = res['thumbnail']
     this.description = res['description']
     this.user_id = res['user_id']
+    this.owner_flag = this.user_id == localStorage.user_id
     this.tag_list = res['tag_list']
     this.description_background = res['description_background']
-    this.thumbnail_background = res['thumbnail_background']
+    this.thumbnail_background = (res['thumbnail_background'] == null) ? "/assets/img/project_img_none.png" : res['thumbnail_background']
     $('#detail_background_img').css('content', 'none');
     this.description_idea = res['description_idea']
-    this.thumbnail_idea = res['thumbnail_idea']
+    this.thumbnail_idea = (res['thumbnail_idea'] == null) ? "/assets/img/project_img_none.png" : res['thumbnail_idea']
     $('#detail_idea_img').css('content', 'none');
     this.description_technology = res['description_technology']
-    this.thumbnail_technology = res['thumbnail_technology']
+    this.thumbnail_technology = (res['thumbnail_technology'] == null) ? "/assets/img/project_img_none.png" : res['thumbnail_technology']
     $('#detail_tech_img').css('content', 'none');
     this.appendix = res['appendix']
     this.color = res['color']
@@ -92,6 +97,10 @@ export class ArticlePage implements OnInit {
 
   toTraining = () => {
     this.router.navigate(['/feedback']);
+  }
+
+  toEdit = () => {
+    this.router.navigate(['/new_project', this.project_id])
   }
 
 }
