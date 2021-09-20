@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/architect": "^0.1202.6",
     "@angular/common": "~12.1.1",
     "@angular/core": "~12.1.1",
     "@angular/forms": "~12.1.1",
@@ -22,6 +23,7 @@
     "@azure/ai-text-analytics": "^5.1.0",
     "@ionic/angular": "^5.5.2",
     "@types/jquery": "^3.5.6",
+    "ajv": "^8.6.3",
     "axios": "^0.21.4",
     "jquery": "^3.6.0",
     "marked": "^3.0.3",
