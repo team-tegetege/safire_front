@@ -19,8 +19,10 @@
 
         <article class="project">
             <div class="btn-presentation">
-                <ion-button *ngIf="owner_flag" fill="outline" (click)="toEdit()"><ion-icon name="pencil-outline"></ion-icon><span class="ion-padding" >編集</span></ion-button>
-                <ion-button *ngIf="owner_flag" fill="outline" (click)="toTraining()"><ion-icon name="trending-up-outline"></ion-icon><span class="ion-padding" >発表練習</span></ion-button>
+                <ion-button *ngIf="apply_flag" color="secondary" (click)="presentModal()"><ion-icon name="star-half-outline"></ion-icon><span class="ion-padding" >評価する</span></ion-button>
+                <ion-button *ngIf="apply_flag" fill="outline" (click)="alertConfirm()"><ion-icon name="people-outline"></ion-icon><span class="ion-padding" >メンバー参加の申請</span></ion-button>
+                <ion-button *ngIf="member_flag" fill="outline" (click)="toEdit()"><ion-icon name="pencil-outline"></ion-icon><span class="ion-padding" >編集</span></ion-button>
+                <ion-button *ngIf="member_flag" fill="outline" (click)="toTraining()"><ion-icon name="trending-up-outline"></ion-icon><span class="ion-padding" >発表練習</span></ion-button>
                 <ion-button (click)="toPresentation()"><ion-icon name="videocam-outline"></ion-icon><span class="ion-padding" >プレゼンモード</span></ion-button>
             </div>
             <div class="text_center"><h1 class="project_title">{{title}}</h1></div>
@@ -34,10 +36,36 @@
                     <ul class="project_tags">
                         <div class="display_flex">
                             <div class="center">
-                                <div *ngFor="let tag of tag_list">
-                                    <ion-chip>
-                                        <ion-label>{{tag}}</ion-label>
-                                    </ion-chip>
+                                <div>
+                                    <ng-container>
+                                        <ion-chip>
+                                            <ion-avatar>
+                                                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                                              </ion-avatar>
+                                            <ion-label>{{user_id}}</ion-label>
+                                        </ion-chip>
+                                    </ng-container>
+                                    <ng-container *ngFor="let member of member_list">
+                                        <ion-chip>
+                                            <ion-avatar>
+                                                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                                              </ion-avatar>
+                                            <ion-label>{{member}}</ion-label>
+                                        </ion-chip>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="project_tags">
+                        <div class="display_flex">
+                            <div class="center">
+                                <div>
+                                    <ng-container *ngFor="let tag of tag_list">
+                                        <ion-chip>
+                                            <ion-label>{{tag}}</ion-label>
+                                        </ion-chip>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>

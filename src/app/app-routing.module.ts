@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
+  {
+    path: 'rate-modal',
+    loadChildren: () => import('./rate-modal/rate-modal.module').then( m => m.RateModalPageModule)
+  },
   /*{
     path: 'title',
     loadChildren: () => import('./title/title.module').then( m => m.TitlePageModule)

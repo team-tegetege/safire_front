@@ -32,8 +32,32 @@
                             <textarea id="project_description" readonly>{{description}}</textarea>
                         </div>
                     </div>
-                </section>
+                </section>               
                 <section class="project-list">
+                    <ng-container *ngIf="applied_flag">
+                        <h2 class="project-list_title">プロジェクトのメンバー参加申請</h2>
+                        <div class="applied-user-list_content">
+                            <div class="applied-users">
+                                <ion-row class="applied-users-list">
+                                    
+                                    <ion-card *ngFor="let user of applied_user; index as i" class="user-card" (click)="alertConfirm(user.id, user.user_id, user.project_title, i)">
+                                        <div class="user-card_icon">
+                                            <img src="/assets/img/user_ex_icon.jpg">
+                                        </div>
+                                        <ul class="user-card_profile">
+                                            <li class="user-card_name">
+                                                <p>{{user.user_id}}</p>
+                                            </li>
+                                            <li class="user-card_tags">
+                                                <p>{{user.project_title}}</p>
+                                            </li>
+                                        </ul>
+                                    </ion-card>
+
+                                </ion-row>
+                            </div>
+                        </div>
+                    </ng-container>
                     <h2 class="project-list_title">{{user_id}}さんの作品</h2>
                     <div class="project-list_content">
                         <div class="projects">
