@@ -18,6 +18,7 @@ export class SignupPage implements OnInit {
   password_confirm: string;
   age: any;
   gender: string;
+  school_grade: string;
   descripton: string;
 
   constructor(
@@ -34,6 +35,7 @@ export class SignupPage implements OnInit {
       this.postObj['password'] = this.password
     } else {return};
     this.postObj['age'] = this.age;
+    this.postObj["school_grade"] = this.school_grade
     this.postObj['gender'] = this.gender;
     
     const element: HTMLInputElement = <HTMLInputElement>document.getElementById('description')
