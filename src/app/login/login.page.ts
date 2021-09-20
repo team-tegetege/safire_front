@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
         if(this.returnObj['message']){
           console.log('Success Login')
           localStorage.user_id = this.user_id;
-          this.router.navigate(['userhome']);
+          this.router.navigate(['home']);
         }
         else{
           console.log('Error');
