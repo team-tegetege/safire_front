@@ -55,7 +55,7 @@ export class UserpagePage {
   }
 
   toUserHome = () => {
-    this.router.navigate(['userhome']);
+    this.router.navigate(['home']);
   }
 
   logout = () => {

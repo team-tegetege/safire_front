@@ -135,6 +135,42 @@ section {
     text-decoration: none;
 }
 
+.header-main_menu_signup {
+    width: 120px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #136fff;
+    /*background: linear-gradient(90deg, #0000aa, #8080ff);*/
+    border-radius: 8px;
+    // overflow: hidden;
+    font-size: 20px;
+}
+.header-main_menu_signup a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header-main_menu_login {
+    width: 120px;
+    height: 40px;
+    margin: 0 20px 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.0);
+    font-size: 20px;
+}
+.header-main_menu_login a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 /** フッター **/
 .footer {
     width: 100%;
