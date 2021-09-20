@@ -182,9 +182,13 @@ article {
 }
 
 .btn-presentation {
+    width: 50%;
+    margin: auto 0 auto auto;
+    /*
     position: absolute;
     top: 120px;
     right: 200px;
+    */
 }
 .btn-presentation img {
     margin-right: 3px;
@@ -350,7 +354,7 @@ article {
     height: 186px;
     margin-right: auto;
     margin-left: auto;
-    content: url('/assets/img/project_img_none.png');
+    // content: url('/assets/img/project_img_none.png');
 }
 
 .note {

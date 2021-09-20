@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./new_project/new_project.module').then( m => m.NewProjectPageModule)
   },
   {
+    path: 'new_project/:project_id',
+    loadChildren: () => import('./new_project/new_project.module').then( m => m.NewProjectPageModule)
+  },
+  {
     path: 'article',
     loadChildren: () => import('./article/article.module').then( m => m.ArticlePageModule)
   },

@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../global.service';
 import { TextAnalyticsClient, AzureKeyCredential } from "@azure/ai-text-analytics";
 import { LoadingController } from '@ionic/angular';
@@ -34,6 +34,7 @@ export class NewProjectPage {
   thumbnail: string;
   description: string;
   user_id: string;
+  allCheckBoxes: any;
   tag_list: any[] = [];
   description_background: string;
   thumbnail_background: any;
@@ -47,20 +48,17 @@ export class NewProjectPage {
   interval: any[] = []
   loading: any
 
+  edit_flag: boolean = false
+  project_id: number
+
   constructor(
     private router: Router,
     public gs: GlobalService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-
-
-    marked.setOptions({
-      sanitize: true,
-      sanitizer: escape,
-      breaks : true
-    });
 
     this.simplemde = new SimpleMDE({
       element: document.getElementById("editor"),
@@ -83,7 +81,7 @@ export class NewProjectPage {
           "fullscreen",
           "guide"
       ],
-      spellChecker: false
+      spellChecker: false,
     });
 
     this.simplemde.codemirror.on('refresh', () => {
@@ -93,40 +91,95 @@ export class NewProjectPage {
             $('header').css('display', 'block');
         }
     });
+
+    this.route.params.subscribe(
+      params => {
+        if (params['project_id'] !== undefined) {
+          this.edit_flag = true
+          this.project_id = params['project_id']
+          this.gs.httpGet("https://techfusion-studio.com/safire/project/"+this.project_id).subscribe(
+            res => {
+              console.log(res)
+              this.title = res["title"]
+              this.thumbnail = res["thumbnail"]
+
+              var element: HTMLInputElement = <HTMLInputElement>document.getElementById('project_description')
+              element.value = res["description"]
+              var element_background: HTMLInputElement = <HTMLInputElement>document.getElementById('background_description');
+              element_background.value = res["description_background"]
+              var element_idea: HTMLInputElement = <HTMLInputElement>document.getElementById('point_description')
+              element_idea.value = res["description_idea"]
+              var element_technology: HTMLInputElement = <HTMLInputElement>document.getElementById('tech_description')
+              this.description_technology = element_technology.value = res["description_technology"]
+
+              this.allCheckBoxes =  document.querySelectorAll("input[type='checkbox']") as NodeListOf<HTMLInputElement>
+              this.allCheckBoxes.forEach(checkBox => {
+                if (res["tag_list"].includes(checkBox.value)) checkBox.checked = true
+              });
+              
+              this.simplemde.value(res["appendix"])
+              this.color = res["color"]
+
+              this.thumbnail = res["thumbnail"]
+              this.imgSrcProject = this.thumbnail == null ? '/assets/img/project_img_none.png' : this.thumbnail
+              this.thumbnail_background = res["thumbnail_background"]
+              this.imgSrcBackground = this.thumbnail_background == null ? '/assets/img/project_img_none.png' : this.thumbnail_background
+              this.thumbnail_idea = res["thumbnail_idea"]
+              this.imgSrcPoint = this.thumbnail_idea == null ? '/assets/img/project_img_none.png' : this.thumbnail_idea
+              this.thumbnail_technology = res["thumbnail_technology"]
+              this.imgSrcTech = this.thumbnail_technology == null ? '/assets/img/project_img_none.png' : this.thumbnail_technology
+            }
+          )
+        }
+        else this.edit_flag = false
+        // console.log(this.edit_flag)
+      }
+    )
+
+    marked.setOptions({
+      sanitize: true,
+      sanitizer: escape,
+      breaks : true
+    });
   }
 
 
   postProject = () => {
-    this.setValues(); //画像以外の登録情報をセットする
-    this.postObj['title'] = this.title;
-    this.postObj['thumbnail'] = this.thumbnail;
-    this.postObj['description'] = this.description;
-    this.postObj['user_id'] = this.user_id;
-    this.postObj['tag_list'] = this.tag_list;
-    this.postObj['description_background'] = this.description_background;
-    this.postObj['thumbnail_background'] = this.thumbnail_background;
-    this.postObj['description_idea'] = this. description_idea;
-    this.postObj['thumbnail_idea'] = this.thumbnail_idea;
-    this.postObj['description_technology'] = this.description_technology;
-    this.postObj['thumbnail_technology'] = this.thumbnail_technology;
-    this.postObj['appendix'] = this.appendix;
-    this.postObj['color'] = this.color;
     const body = this.postObj;
+    console.log(body)
 
-    this.gs.http(this.url+'project', body).subscribe(
-      res => {
-        this.returnObj = res;
-        console.log(this.returnObj['message']);
-        if(this.returnObj['message']){
-          console.log('Success: Post Project')
-          this.router.navigate(['userpage']);
+    if (this.edit_flag) {
+      this.gs.httpPut(this.url+'project/'+this.project_id, body).subscribe(
+        res => {
+          this.returnObj = res;
+          console.log(this.returnObj['message']);
+          if(this.returnObj['message']){
+            console.log('Success: Post Project')
+            this.router.navigate(['userpage']);
+          }
+          else {
+            console.log('Error');
+            return;
+          }
         }
-        else {
-          console.log('Error');
-          return;
+      )
+    }
+    else {
+      this.gs.http(this.url+'project', body).subscribe(
+        res => {
+          this.returnObj = res;
+          console.log(this.returnObj['message']);
+          if(this.returnObj['message']){
+            console.log('Success: Post Project')
+            this.router.navigate(['userpage']);
+          }
+          else {
+            console.log('Error');
+            return;
+          }
         }
-      }
-    )
+      )
+    }
   }
 
   setValues = () => {
@@ -266,13 +319,34 @@ export class NewProjectPage {
   }
 
   async keyPhrases() {
+    this.setValues(); //画像以外の登録情報をセットする
+    this.postObj['title'] = this.title;
+    this.postObj['thumbnail'] = this.thumbnail;
+
+    var element: HTMLInputElement = <HTMLInputElement>document.getElementById('project_description')
+    this.postObj['description'] = element.value
+    var element_background: HTMLInputElement = <HTMLInputElement>document.getElementById('background_description');
+    this.postObj['description_background'] = element_background.value
+    var element_idea: HTMLInputElement = <HTMLInputElement>document.getElementById('point_description')
+    this.postObj['description_idea'] = element_idea.value
+    var element_technology: HTMLInputElement = <HTMLInputElement>document.getElementById('tech_description')
+    this.postObj['description_technology'] = element_technology.value
+    
+    this.postObj['user_id'] = this.user_id;
+    this.postObj['tag_list'] = this.tag_list;
+    this.postObj['thumbnail_background'] = this.thumbnail_background;
+    this.postObj['thumbnail_idea'] = this.thumbnail_idea;
+    this.postObj['thumbnail_technology'] = this.thumbnail_technology;
+    this.postObj['appendix'] = this.appendix;
+    this.postObj['color'] = this.color;
+    
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
       duration: 120000
     });
     await this.loading.present();
-    this.getKeyPhrase(this.description_background, 0)
+    this.getKeyPhrase(this.postObj["description_background"], 0)
   }
 
   async getKeyPhrase(text: string, times: number ) {
@@ -295,6 +369,7 @@ export class NewProjectPage {
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
     });*/
+    const abstract_id = String(Math.floor(Math.random() * 1000000000))
     let body = {
       "analysisInput": {
         "documents": []
@@ -313,7 +388,7 @@ export class NewProjectPage {
     }
     body["analysisInput"]["documents"].push({
       "language": "ja",
-      "id": "1",  // project_id（後で書き換える）
+      "id": `${abstract_id}`,
       "text": `${text}`  // description
     })
     this.gs.httpAbst('https://safire.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/analyze', body).subscribe(
@@ -328,11 +403,11 @@ export class NewProjectPage {
                 const abstract = res["tasks"]["extractiveSummarizationTasks"][0]["results"]["documents"][0]["sentences"]
                 if (times == 0) {
                   this.postObj['abstract_background'] = abstract;
-                  this.getKeyPhrase(this.description_idea, 1)
+                  this.getKeyPhrase(this.postObj["description_idea"], 1)
                 }
                 else if (times == 1) {
                   this.postObj['abstract_idea'] = abstract;
-                  this.getKeyPhrase(this.description_technology, 2)
+                  this.getKeyPhrase(this.postObj["description_technology"], 2)
                 }
                 else if (times == 2) {
                   this.postObj['abstract_technology'] = abstract;

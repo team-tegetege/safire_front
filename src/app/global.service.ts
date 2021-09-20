@@ -64,6 +64,18 @@ export class GlobalService {
     return ret;
   }
 
+  public httpPut(_postUrl: string, _trans_data: any = ''): Observable<any> {
+    let ret: Observable<any>;
+    let postUrl: string;
+    postUrl = _postUrl;
+    ret = this._http.put(postUrl, _trans_data, HTTP_OPTIONS)
+    .pipe(
+      timeout(5000),
+      catchError(this.handleError())
+    );
+    return ret;
+  }
+
   public httpGet(_getUrl: string): Observable<any> {
     let ret: Observable<any>;
     let getUrl: string;

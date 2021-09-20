@@ -18,13 +18,12 @@
         </header>
 
         <article class="project">
-            <div class="text_center"><h1 class="project_title">{{title}}</h1></div>
-            <div class="display_flex">
-                <div class='btn-presentation'>
-                    <ion-button (click)="toTraining()">発表練習</ion-button>
-                    <ion-button (click)="toPresentation()">発表モード</ion-button>
-                </div>
+            <div class="btn-presentation">
+                <ion-button *ngIf="owner_flag" fill="outline" (click)="toEdit()"><ion-icon name="pencil-outline"></ion-icon><span class="ion-padding" >編集</span></ion-button>
+                <ion-button *ngIf="owner_flag" fill="outline" (click)="toTraining()"><ion-icon name="trending-up-outline"></ion-icon><span class="ion-padding" >発表練習</span></ion-button>
+                <ion-button (click)="toPresentation()"><ion-icon name="videocam-outline"></ion-icon><span class="ion-padding" >プレゼンモード</span></ion-button>
             </div>
+            <div class="text_center"><h1 class="project_title">{{title}}</h1></div>
             <section class="project_main">
                 <div class="project_main_content">
                     <div class="project_description">
@@ -36,7 +35,9 @@
                         <div class="display_flex">
                             <div class="center">
                                 <div *ngFor="let tag of tag_list">
-                                    <p>{{tag}}</p><br>
+                                    <ion-chip>
+                                        <ion-label>{{tag}}</ion-label>
+                                    </ion-chip>
                                 </div>
                             </div>
                         </div>
