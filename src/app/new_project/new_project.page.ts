@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../global.service';
 import { TextAnalyticsClient, AzureKeyCredential } from "@azure/ai-text-analytics";
