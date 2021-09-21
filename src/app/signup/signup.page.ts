@@ -19,7 +19,7 @@ export class SignupPage implements OnInit {
   age: any;
   gender: string;
   school_grade: string;
-  descripton: string;
+  description: string;
 
   constructor(
     private router: Router,
