@@ -7,6 +7,7 @@ import Cookie from 'universal-cookie';
 
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import marked from 'marked';
 
 declare global {
   interface MediaDevices {
@@ -21,7 +22,7 @@ declare global {
 })
 export class FeedbackPage implements OnInit {
 
-  text: string = ""
+  text: string = "しゃべった内容をここで確認！"
   status: string = "しゃべった内容をここで確認！"
 
   speechFlag: boolean = true
@@ -41,6 +42,32 @@ export class FeedbackPage implements OnInit {
   start_time: number
   start_waiting: any
 
+  timer_id: any
+  timer_last: any
+  timer_start: any
+  timer_between: any
+  timer: string = "00:00"
+  char_per_sec: string
+
+  top_button_list: any[] = [
+    {
+      name: "入力内容表示",
+      fill: "outline",
+      flag: true,
+      list: []
+    },{
+      name: "要約内容表示",
+      fill: "solid",
+      flag: false,
+      list: []
+    },{
+      name: "補足内容表示",
+      fill: "solid",
+      flag: false,
+      list: []
+    }
+  ]
+
   constructor(
     private router: Router,
     public gs: GlobalService,
@@ -57,15 +84,45 @@ export class FeedbackPage implements OnInit {
           res => {
             this.return = res
             console.log(res)
+            this.setList(res)
           }
         )
       }
     )
   }
 
+  setList = (res) => {
+    this.top_button_list[0]["list"].push(res["title"])
+    this.top_button_list[0]["list"].push(res["description_background"].split("。").join("。<br>"))
+    this.top_button_list[0]["list"].push(res["description_idea"].split("。").join("。<br>"))
+    this.top_button_list[0]["list"].push(res["description_technology"].split("。").join("。<br>"))
+    this.top_button_list[1]["list"].push(res["title"] + "<br>")
+    this.top_button_list[1]["list"].push(res["abstract_list"][0].join("<br>"))
+    this.top_button_list[1]["list"].push(res["abstract_list"][1].join("<br>"))
+    this.top_button_list[1]["list"].push(res["abstract_list"][2].join("<br>"))
+    this.top_button_list[2]["list"].push(marked(res["appendix"]).replace('\n', '<br>'))
+  }
+
+  clickTopButton = (index) => {
+    this.top_button_list.forEach(
+      (button, i) => {
+        if (index == i) {
+          button["fill"] = "outline"
+          button["flag"] = true
+        }
+        else {
+          button["fill"] = "solid"
+          button["flag"] = false
+        }
+      }
+    )
+  }
+
   startSpeech = () => {
+    this.text = ""
     this.speechFlag = true
     this.sttFromMic()
+    this.startRecording()
   }
   stopSpeech = () => {
     this.speechFlag = false
@@ -86,18 +143,22 @@ export class FeedbackPage implements OnInit {
     this.status = "speak into your microphone..."
 
     recognizer.recognizeOnceAsync(result => {
-        if (result.reason === sdk.ResultReason.RecognizedSpeech) {
-            this.text = this.text + `${result.text}`
-            if (this.speechFlag == true) {
-              this.sttFromMic()
-            }
-            else {
-              this.text = this.text + "[END]"
-            }
-        } else {
-          this.text = this.text + "[END]"
-        }
+      this.setText(result)
     });
+  }
+
+  setText = (result) => {
+    if (result.reason === sdk.ResultReason.RecognizedSpeech) {
+      this.char_per_sec =  (result.text.length / ((Date.now() - this.timer_last) / 1000)).toFixed(1)
+      this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] ${result.text}<br>`
+    }
+    if (this.speechFlag == true) {
+      this.sttFromMic()
+    }
+    else {
+      this.text = this.text + "[END]"
+      this.stopRecording()
+    }
   }
 
   async getTokenOrRefresh() {
@@ -146,7 +207,7 @@ export class FeedbackPage implements OnInit {
         video: {
           width: 300,
           height: 200,
-          facingMode: "user"   // フロントカメラを利用する
+          // facingMode: "user"   // フロントカメラを利用する
           // facingMode: { exact: "environment" }  // リアカメラを利用する場合
         }
       }
@@ -172,7 +233,7 @@ export class FeedbackPage implements OnInit {
       // なんらかの処理。
       if (result.state !== "granted") this.alertPermission()
       else {
-        this.setupRecording()
+        this.alertWay()
       }
     });
   }
@@ -183,8 +244,20 @@ export class FeedbackPage implements OnInit {
     });
     await alert.present();
   }
+  async alertWay() {
+    const alert = await this.alertController.create({
+      message: '録画する画面を選択して `共有` を押すとカウントダウンの後にプレゼン練習の録画が始まります!<br>頑張ってください👍',
+      buttons: [
+        { text: 'OK',
+          handler: () => {
+            this.setupRecording()
+          }
+        },
+      ],
+    });
+    await alert.present();
+  }
   async setupRecording () {
-    console.log("start recording")
     const videoStream = await navigator.mediaDevices.getDisplayMedia({
       video: true,
       audio: false
@@ -209,15 +282,16 @@ export class FeedbackPage implements OnInit {
       if (this.start_time == 0) {
         this.start_waiting.dismiss()
         clearInterval(this.start_interval)
-        this.startRecording()
+        this.startSpeech()
       }
     }, 1000)
   }
   async startRecording () {
+    console.log("start recording")
+    this.startTimer()
     this.recorder.start();
     
     this.download_link = document.createElement('a');
-    // const link = document.querySelector("#downloadlink");
     this.recorder.ondataavailable = e => {
       console.log("ondataavailable", e);
       const blob = new Blob([e.data], { type: e.data.type });
@@ -231,5 +305,38 @@ export class FeedbackPage implements OnInit {
   stopRecording = () => {
     this.recorder.stop()
     this.combine_stream.getTracks().forEach(track => track.stop())
+    this.stopTimer()
+  }
+
+  /* タイマー */
+  startTimer = () => {
+    this.timer_start = Date.now()
+    this.timer_last = this.timer_start
+    this.countUp()
+  }
+  countUp = () => {
+    this.timer_id = setTimeout(() => {
+        this.timer_between = Date.now() - this.timer_start
+        this.updateTimer()
+        this.countUp();
+    },200);
+  }
+  updateTimer = () => {
+    let m = Math.floor(this.timer_between / 60000);
+    let s = Math.floor(this.timer_between % 60000 / 1000);
+    //let ms = this.timer_between % 1000;
+
+    let minute = ('0' + m).slice(-2);
+    let second = ('0' + s).slice(-2);
+    //let millisecond = ('0' + ms).slice(-3);
+
+    this.timer = minute + ':' + second
+  }
+  stopTimer = () => {
+    clearTimeout(this.timer_id)
+  }
+  
+  toProject = () => {
+    this.router.navigate(['/article'])
   }
 }
