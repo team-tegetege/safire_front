@@ -21,6 +21,9 @@ ion-content {
     height: 150px;
     overflow: scroll;
 }
+.card-text {
+    font-weight: bold;
+}
 
 .comments {
     width: 80%;
@@ -114,12 +117,14 @@ ion-content {
     font-size: 30px;
     color: white;
     font-weight: bold;
+    margin-top: 8%;
 }
 .bottom-button {
     font-weight: bold;
     font-size: 18px;
     background-color: white;
     border-radius: 10px;
+    margin-top: 5%;
 }
 
 #camera {

@@ -49,6 +49,9 @@ export class FeedbackPage implements OnInit {
   timer: string = "00:00"
   char_per_sec: string
 
+  filler_times: number = 0
+  negative_times: number = 0
+
   top_button_list: any[] = [
     {
       name: "入力内容表示",
@@ -150,7 +153,9 @@ export class FeedbackPage implements OnInit {
   setText = (result) => {
     if (result.reason === sdk.ResultReason.RecognizedSpeech) {
       this.char_per_sec =  (result.text.length / ((Date.now() - this.timer_last) / 1000)).toFixed(1)
-      this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] ${result.text}<br>`
+      this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] `
+      this.checkFiller(String(result.text))
+      // this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] ${result.text}<br>`
     }
     if (this.speechFlag == true) {
       this.sttFromMic()
@@ -159,6 +164,47 @@ export class FeedbackPage implements OnInit {
       this.text = this.text + "[END]"
       this.stopRecording()
     }
+  }
+  checkFiller = (text) => {
+    const body = { text: text.split("。")[0] }
+    this.gs.http("https://45e6-133-237-7-86.ngrok.io/model/parse", body).subscribe(
+      res => {
+        console.log(res)
+        this.filler_times += res["entities"].length
+        if (res["entities"].length == 0) this.text = this.text + `${text.split("。")[0]}。`
+        else this.text = this.text + `${text.split("。")[0]}。(F)`
+
+        if (text.split("。").length == 1 || text.split("。")[1] == "") this.checkNegative(this.text.split("char/sec]").slice(-1)[0])
+        else this.checkFiller(text.split("。").slice(1).join("。"))
+      }
+    )
+  }
+  checkNegative = (text) => {
+    const body = {
+      "documents": [
+        {
+          "id": "string",
+          "text": text,
+          "language": "ja"
+        }
+      ]
+    }
+    this.gs.httpNegative("https://safire.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/sentiment", body).subscribe(
+      res => {
+        this.text = this.text.split("char/sec]").slice(0, -1).join("char/sec]") + "char/sec]"
+        console.log(this.text)
+        res["documents"][0]["sentences"].forEach(
+          sentence => {
+            if (sentence.sentiment == "negative") {
+              this.negative_times += 1
+              this.text = this.text + `${sentence.text}(N)`
+            }
+            else this.text = this.text + `${sentence.text}`
+          }
+        )
+        this.text = this.text + "<br>"
+      }
+    )
   }
 
   async getTokenOrRefresh() {
@@ -287,6 +333,8 @@ export class FeedbackPage implements OnInit {
     }, 1000)
   }
   async startRecording () {
+    this.filler_times = 0
+    this.negative_times = 0
     console.log("start recording")
     this.startTimer()
     this.recorder.start();
