@@ -75,6 +75,7 @@ export class HomePage implements OnInit {
         console.log(this.returnObj)
         if(this.returnObj['project_list']){
           this.project_list = this.returnObj['project_list'];
+          this.checkTagListLength(this.project_list)
         }
       }
     )
@@ -125,5 +126,16 @@ export class HomePage implements OnInit {
     this.ranking_flag = !this.ranking_flag
     if (this.ranking_flag) this.ranking_display = "表示を消す"
     else this.ranking_display = "表示する"
+  }
+
+  /** プロジェクトタグが3つ以上の場合はproject-cardに収まらないので3つだけ表示 **/
+  checkTagListLength = (projects: any[]) => {
+    for(let i in projects){
+      var project = projects[i]
+      if(project['tag_list'].length > 3){
+        this.project_list[i]['tag_list'] = project['tag_list'].splice(0, 3)
+        this.project_list[i]['tag_list'].push('+')
+      }
+    }
   }
 }
