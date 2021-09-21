@@ -5,6 +5,13 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import axios from 'axios';
 import Cookie from 'universal-cookie';
 
+import { AlertController } from '@ionic/angular';
+
+declare global {
+  interface MediaDevices {
+    getDisplayMedia(constraints?: MediaStreamConstraints): Promise<MediaStream>;
+  }
+}
 
 @Component({
   selector: 'app-feedback',
@@ -24,12 +31,19 @@ export class FeedbackPage implements OnInit {
   video_flag: boolean = false
   video_text: string = "カメラ起動"
   stream: any
+  combine_stream: any
   video_button_fill: string = "solid"
+  recorder: any
+  download_link: HTMLAnchorElement
+
+  start_interval: any
+  start_time: number
 
   constructor(
     private router: Router,
     public gs: GlobalService,
     private route: ActivatedRoute,
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
@@ -147,5 +161,65 @@ export class FeedbackPage implements OnInit {
       })
       .catch( (err) => console.log(err.name + ": " + err.message) );
     }
+  }
+
+  startPractice = () => {
+    navigator.permissions.query({name: 'microphone'})
+    .then((result) => {
+      // なんらかの処理。
+      if (result.state !== "granted") this.alertPermission()
+      else {
+        this.setupRecording()
+      }
+    });
+  }
+  async alertPermission() {
+    const alert = await this.alertController.create({
+      message: 'マイクの利用が許可されていません.<br>ブラウザの設定をお願いいたします☺️',
+      buttons: [ { text: 'OK' } ]
+    });
+    await alert.present();
+  }
+  async setupRecording () {
+    console.log("start recording")
+    const videoStream = await navigator.mediaDevices.getDisplayMedia({
+      video: true,
+      audio: false
+    });
+    const audioStream = await navigator.mediaDevices.getUserMedia({
+      video: false,
+      audio: true
+    });
+    this.combine_stream = new MediaStream([...videoStream.getTracks(), ...audioStream.getTracks()])
+    this.recorder = new MediaRecorder(this.combine_stream, { mimeType: 'video/webm;codecs=h264' })
+    // this.recorder = new MediaRecorder(this.stream, { mimeType: "video/webm;codecs=vp9" });
+    this.start_time = 3
+    this.start_interval = setInterval(() => {
+      console.log(this.start_time)
+      if (this.start_time == 0) {
+        clearInterval(this.start_interval)
+        this.startRecording()
+      }
+      this.start_time -= 1
+    }, 1000)
+  }
+  async startRecording () {
+    this.recorder.start();
+    
+    this.download_link = document.createElement('a');
+    // const link = document.querySelector("#downloadlink");
+    this.recorder.ondataavailable = e => {
+      console.log("ondataavailable", e);
+      const blob = new Blob([e.data], { type: e.data.type });
+      const blobUrl = URL.createObjectURL(blob);
+      this.download_link.download = "movie.webm";
+      this.download_link.href = blobUrl;
+      this.download_link.style.display = "block";
+      this.download_link.click();
+    };
+  }
+  stopRecording = () => {
+    this.recorder.stop()
+    this.combine_stream.getTracks().forEach(track => track.stop())
   }
 }
