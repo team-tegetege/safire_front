@@ -13,11 +13,9 @@ export class PointsPage implements OnInit {
   // currentPage: string = 'tech';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
-  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_idea"]
-  abstract1: string = JSON.parse(localStorage.abstract)["abstract_list"][1][0]
-  abstract2: string = JSON.parse(localStorage.abstract)["abstract_list"][1][1]
-  abstract3: string = JSON.parse(localStorage.abstract)["abstract_list"][1][2]
-  abstract4: string = JSON.parse(localStorage.abstract)["abstract_list"][1][3]
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_idea"] || "/assets/img/project_img_none.png"
+  abstract_list: string[] = JSON.parse(localStorage.abstract)["abstract_list"][1]
+  background: string = "#" + JSON.parse(localStorage.abstract)["color"]
 
   constructor(
     private router: Router,
@@ -48,6 +46,6 @@ export class PointsPage implements OnInit {
   }
 
   toPrevPage = () => {
-    this.router.navigate(['/slides', 'project']);
+    this.router.navigate(['/slides', 'background']);
   }
 }

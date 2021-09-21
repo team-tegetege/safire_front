@@ -19,10 +19,10 @@ const routes: Routes = [
         path: 'background',
         loadChildren: () => import('../slideSheet/background/background.module').then(m => m.BackgroundPageModule)
       },
-      {
+      /*{
         path: 'project',
         loadChildren: () => import('../slideSheet/project/project.module').then(m => m.ProjectPageModule)
-      },
+      },*/
       {
         path: 'points',
         loadChildren: () => import('../slideSheet/points/points.module').then(m => m.PointsPageModule)

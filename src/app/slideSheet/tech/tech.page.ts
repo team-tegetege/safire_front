@@ -13,11 +13,9 @@ export class TechPage implements OnInit {
   // currentPage: string = 'tech';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
-  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_technology"]
-  abstract1: string = JSON.parse(localStorage.abstract)["abstract_list"][2][0]
-  abstract2: string = JSON.parse(localStorage.abstract)["abstract_list"][2][1]
-  abstract3: string = JSON.parse(localStorage.abstract)["abstract_list"][2][2]
-  abstract4: string = JSON.parse(localStorage.abstract)["abstract_list"][2][3]
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_technology"] || "/assets/img/project_img_none.png"
+  abstract_list: string[] = JSON.parse(localStorage.abstract)["abstract_list"][2]
+  background: string = "#" + JSON.parse(localStorage.abstract)["color"]
 
   constructor(
     private router: Router,
