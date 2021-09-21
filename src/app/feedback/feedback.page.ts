@@ -6,6 +6,7 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 declare global {
   interface MediaDevices {
@@ -38,12 +39,14 @@ export class FeedbackPage implements OnInit {
 
   start_interval: any
   start_time: number
+  start_waiting: any
 
   constructor(
     private router: Router,
     public gs: GlobalService,
     private route: ActivatedRoute,
     private alertController: AlertController,
+    public loadingController: LoadingController,
   ) { }
 
   ngOnInit() {
@@ -194,13 +197,20 @@ export class FeedbackPage implements OnInit {
     this.recorder = new MediaRecorder(this.combine_stream, { mimeType: 'video/webm;codecs=h264' })
     // this.recorder = new MediaRecorder(this.stream, { mimeType: "video/webm;codecs=vp9" });
     this.start_time = 3
+    this.start_waiting = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: `${this.start_time}秒後に発表練習の録画をスタートします...`,
+      duration: 10000
+    });
+    await this.start_waiting.present();
     this.start_interval = setInterval(() => {
-      console.log(this.start_time)
+      this.start_time -= 1
+      this.start_waiting.message = `${this.start_time}秒後に発表練習の録画をスタートします...`
       if (this.start_time == 0) {
+        this.start_waiting.dismiss()
         clearInterval(this.start_interval)
         this.startRecording()
       }
-      this.start_time -= 1
     }, 1000)
   }
   async startRecording () {
