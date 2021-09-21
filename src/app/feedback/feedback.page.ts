@@ -183,7 +183,7 @@ export class FeedbackPage implements OnInit {
     const body = {
       "documents": [
         {
-          "id": "string",
+          "id": `${String(Math.floor(Math.random() * 1000000000))}`,
           "text": text,
           "language": "ja"
         }
