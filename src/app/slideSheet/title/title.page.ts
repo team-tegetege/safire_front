@@ -15,6 +15,7 @@ export class TitlePage implements OnInit {
 
   title: string = JSON.parse(localStorage.abstract)["title"]
   thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail"]
+  background: string = "#" + JSON.parse(localStorage.abstract)["color"]
 
   constructor(
     private router: Router,
@@ -22,6 +23,12 @@ export class TitlePage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+  
+  // 既存のページに帰ってくる場合はこっち
+  ionViewDidEnter() {
+    var element = document.getElementsByClassName("div_other")[0]
+    console.log(element)
   }
 
   @HostListener('window:keydown', ['$event'])
