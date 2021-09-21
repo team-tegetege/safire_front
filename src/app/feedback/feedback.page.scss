@@ -72,3 +72,10 @@ ion-content {
 .btn-group span {
     font-size: 50px;
 }
+
+.my-custom-class {
+    --background: #222;
+    --spinner-color: #fff;
+
+    color: #fff;
+}
