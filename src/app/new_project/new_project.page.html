@@ -105,7 +105,7 @@
                             <div class="display_flex">
                                 <div class="center">
                                     <p>メインカラー</p>
-                                    <input class="color-picker" [(colorPicker)]="color" [style.background]="color" [value]="color" readonly/>
+                                    <input class="color-picker" [(colorPicker)]="color" [cpAlphaChannel]="disabled" [cpOutputFormat]="rgba" [style.background]="color" [value]="color" readonly/>
                                 </div>
                             </div>
                         </ul>

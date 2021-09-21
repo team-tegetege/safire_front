@@ -119,7 +119,7 @@ export class NewProjectPage {
               });
               
               this.simplemde.value(res["appendix"])
-              this.color = res["color"]
+              this.color = '#'+res["color"]
 
               this.thumbnail = res["thumbnail"]
               this.imgSrcProject = this.thumbnail == null ? '/assets/img/project_img_none.png' : this.thumbnail
