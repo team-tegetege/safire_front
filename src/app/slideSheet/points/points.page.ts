@@ -46,6 +46,6 @@ export class PointsPage implements OnInit {
   }
 
   toPrevPage = () => {
-    this.router.navigate(['/slides', 'project']);
+    this.router.navigate(['/slides', 'background']);
   }
 }

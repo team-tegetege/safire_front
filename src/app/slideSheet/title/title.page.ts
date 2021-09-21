@@ -24,13 +24,6 @@ export class TitlePage implements OnInit {
 
   ngOnInit() {
   }
-  
-  // 既存のページに帰ってくる場合はこっち
-  ionViewDidEnter() {
-    var element = document.getElementsByClassName("div_other")[0]
-    console.log(element)
-  }
-
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     this.ngOnInit();

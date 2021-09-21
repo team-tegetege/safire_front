@@ -37,7 +37,7 @@ export class BackgroundPage implements OnInit {
   
 
   toNextPage = () => {
-    this.router.navigate(['/slides', 'project']);
+    this.router.navigate(['/slides', 'points']);
   }
 
   toPrevPage = () => {
