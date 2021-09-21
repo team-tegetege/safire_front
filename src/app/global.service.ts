@@ -27,6 +27,13 @@ const HTTP_OPTIONS_ABST_GET = {
     'Accept': 'application/json'
   },)
 };
+const HTTP_OPTIONS_NEGATIVE = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json; charset=UTF-8',
+    'Ocp-Apim-Subscription-Key': '06adf4e018174acca54b1d98b5a633e9',
+    'Accept': 'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +64,17 @@ export class GlobalService {
     let postUrl: string;
     postUrl = _postUrl;
     ret = this._http.post(postUrl, _trans_data, HTTP_OPTIONS_ABST)
+    .pipe(
+      timeout(5000),
+      catchError(this.handleError())
+    );
+    return ret;
+  }
+  public httpNegative(_postUrl: string, _trans_data: any = ''): Observable<any> {
+    let ret: Observable<any>;
+    let postUrl: string;
+    postUrl = _postUrl;
+    ret = this._http.post(postUrl, _trans_data, HTTP_OPTIONS_NEGATIVE)
     .pipe(
       timeout(5000),
       catchError(this.handleError())
