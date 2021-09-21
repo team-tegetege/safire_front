@@ -332,13 +332,16 @@ section {
 .project-card_title {
     height: 13%;
     padding: 0 1% 0 1%;
-    margin-bottom: 0%;
+    margin-top: 0;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 3px solid #58c9c1;
+    border-bottom: 3px solid #75a9ff;
 }
-.project-list_title h3 {
+.project-card_title h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 114px;
     color: rgba(0, 0, 0, 0.89);
 }

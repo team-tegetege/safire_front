@@ -99,13 +99,13 @@
                                     <label for="other_cate" class="label_tags">その他</label>
                                 </div>
                             </div>
-                            <ion-button class="project-form_tags_dialog_finish" onclick="document.getElementById('dialog_tags').close()">完了</ion-button>
+                            <ion-button class="project-form_tags_dialog_finish" onclick="document.getElementById('dialog_tags').close();">完了</ion-button>
                         </dialog>
                         <ul class="project-form_main_content_color">
                             <div class="display_flex">
                                 <div class="center">
                                     <p>メインカラー</p>
-                                    <input class="color-picker" [(colorPicker)]="color" cpAlphaChannel="disabled" cpOutputFormat="rgba" [style.background]="color" [value]="color" readonly/>
+                                    <input class="color-picker" [(colorPicker)]="color" cpAlphaChannel="disabled" cpOutputFormat="auto" [style.background]="color" [value]="color" readonly/>
                                 </div>
                             </div>
                         </ul>

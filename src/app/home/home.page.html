@@ -65,10 +65,10 @@
                     </div>
                 </ng-container>
 
-                <h2 class="recommended-user-list_title">おすすめ記事</h2>
-                <div class="recommended-user-list_content" (click)="changeRankingDisplay()">
+                <h2 class="recommended-project-list_title">おすすめ記事</h2>
+                <div class="recommended-project-list_content" (click)="changeRankingDisplay()">
                     <div class="recommended-users">
-                        <ion-button expand="block">{{ranking_display}}</ion-button>
+                        <button expand="block">{{ranking_display}}</button>
                     </div>
                 </div>
             </section>
@@ -78,7 +78,7 @@
                 <div class="project-list_content">
                     <div class="projects">
                         <div *ngFor='let project of project_list'>
-                            <ion-card class="project-card" (click)="toArticlePage(project['id'])">
+                            <ion-card class="project-card" [style.background]="'#'+project['color']" (click)="toArticlePage(project['id'])">
                                 <div class="project-card_thumnail">
                                     <img [src]="project['thumbnail']">
                                 </div>
