@@ -41,6 +41,7 @@ export class UserpagePage {
         this.returnObj = res;
         if(this.returnObj['message']){
           this.own_project_list = this.returnObj['own_project_list'];
+          this.checkTagListLength(this.own_project_list);
           //this.image = this.['thumbnail'];
           console.log(this.image);
           console.log('Success Get User Info');
@@ -146,4 +147,14 @@ export class UserpagePage {
     )
   }
 
+  /** プロジェクトタグが3つ以上の場合はproject-cardに収まらないので3つだけ表示 **/
+  checkTagListLength = (projects: any[]) => {
+    for(let i in projects){
+      var project = projects[i]
+      if(project['tag_list'].length > 3){
+        this.own_project_list[i]['tag_list'] = project['tag_list'].splice(0, 3)
+        this.own_project_list[i]['tag_list'].push('+')
+      }
+    }
+  }
 }
