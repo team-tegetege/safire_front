@@ -212,9 +212,15 @@ article {
     flex-wrap: wrap;
     list-style: none;
 }
+.project-form_main_content_tags p {
+    width: 30px;
+    margin: auto;
+    
+}
 .project-form_main_content_tags button{
-    width: 15%;
-    height: 15%;
+    width: 40px;
+    height: 40px;
+    margin: auto;
     cursor: pointer;
     background-color: #ffffff;
 }
@@ -302,6 +308,9 @@ article {
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
+}
+.project-form_main_content_color p {
+    margin: auto;
 }
 .project-form_main_content_color button{
     width: 15%;
@@ -499,11 +508,12 @@ article {
 }
 .btn-submission img {
     margin-right: 5px;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
 }
 .btn-submission p {
-    font-size: 20px;
+    font-size: 22px;
+    margin-bottom: 0;
 }
 
 .my-custom-class {
