@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../global.service';
 import { TextAnalyticsClient, AzureKeyCredential } from "@azure/ai-text-analytics";
@@ -13,6 +13,7 @@ import * as marked from 'marked';
   templateUrl: 'new_project.page.html',
   styleUrls: ['new_project.page.scss']
 })
+
 export class NewProjectPage {
   url: string = 'https://techfusion-studio.com/safire/'
   postObj: any = {};
@@ -43,7 +44,7 @@ export class NewProjectPage {
   description_technology: string;
   thumbnail_technology: any;
   appendix: string;
-  color: string;
+  color: string = "#2889e9";
 
   interval: any[] = []
   loading: any
@@ -142,7 +143,6 @@ export class NewProjectPage {
       breaks : true
     });
   }
-
 
   postProject = () => {
     const body = this.postObj;
@@ -338,7 +338,7 @@ export class NewProjectPage {
     this.postObj['thumbnail_idea'] = this.thumbnail_idea;
     this.postObj['thumbnail_technology'] = this.thumbnail_technology;
     this.postObj['appendix'] = this.appendix;
-    this.postObj['color'] = this.color;
+    this.postObj['color'] = this.color.replace('#', '');
     
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',

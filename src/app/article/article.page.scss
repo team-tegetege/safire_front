@@ -269,6 +269,21 @@ article {
     background: chartreuse;
 
 }
+
+.project-color {
+    align-items: left;
+    padding-left: 0;
+}
+
+.color {
+    position: relative;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    text-align: center;
+}
 /*.project-form_detail_background_img_upload {
     width: 271px;
     height: 186px;
@@ -363,7 +378,7 @@ article {
 
 .note {
     width: 800px;
-    height: 400px;
+    //height: 400px;
     background-color: #ffffff;
     border: 5px solid #ffad90;
 }

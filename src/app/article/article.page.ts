@@ -93,7 +93,7 @@ export class ArticlePage implements OnInit {
     this.thumbnail_technology = (res['thumbnail_technology'] == null) ? "/assets/img/project_img_none.png" : res['thumbnail_technology']
     $('#detail_tech_img').css('content', 'none');
     this.appendix = res['appendix']
-    this.color = res['color']
+    this.color = '#'+res['color']
 
     this.appendix_html = marked(this.appendix).replace('\n', '<br>');
   }
