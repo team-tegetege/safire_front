@@ -12,11 +12,9 @@ export class BackgroundPage implements OnInit {
   // currentPage: string = 'background';
   // currentPageIndex: any = table.indexOf(this.currentPage);
 
-  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_background"]
-  abstract1: string = JSON.parse(localStorage.abstract)["abstract_list"][0][0]
-  abstract2: string = JSON.parse(localStorage.abstract)["abstract_list"][0][1]
-  abstract3: string = JSON.parse(localStorage.abstract)["abstract_list"][0][2]
-  abstract4: string = JSON.parse(localStorage.abstract)["abstract_list"][0][3]
+  thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail_background"] || "/assets/img/project_img_none.png"
+  abstract_list: string[] = JSON.parse(localStorage.abstract)["abstract_list"][0]
+  background: string = "#" + JSON.parse(localStorage.abstract)["color"]
 
   constructor(
     private router: Router,
@@ -39,7 +37,7 @@ export class BackgroundPage implements OnInit {
   
 
   toNextPage = () => {
-    this.router.navigate(['/slides', 'project']);
+    this.router.navigate(['/slides', 'points']);
   }
 
   toPrevPage = () => {

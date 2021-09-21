@@ -15,6 +15,7 @@ export class TitlePage implements OnInit {
 
   title: string = JSON.parse(localStorage.abstract)["title"]
   thumbnail: string = JSON.parse(localStorage.abstract)["thumbnail"]
+  background: string = "#" + JSON.parse(localStorage.abstract)["color"]
 
   constructor(
     private router: Router,
@@ -23,7 +24,6 @@ export class TitlePage implements OnInit {
 
   ngOnInit() {
   }
-
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     this.ngOnInit();
