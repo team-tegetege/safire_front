@@ -254,6 +254,9 @@ section {
     display: flex;
     margin: 5px 0;
 }
+.tomypage-card:hover {
+    cursor: pointer;
+}
 
 .tomypage-card_icon {
     width: 80px;
@@ -299,6 +302,7 @@ section {
 }
 .new-project:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
 .new-project img {
     margin-right: 5px;
@@ -325,7 +329,7 @@ section {
 }
 
 .recommended-user-list_title {
-    margin: 0 0 45px 0;
+    margin: 0 0 20px 0;
     position: relative;
     text-align: center;
 }
@@ -417,6 +421,16 @@ section {
     margin: 0;
 }
 
+.recommended-project-list_title {
+    margin: 40px 0 20px 0;
+    position: relative;
+    text-align: center;
+}
+
+.recommended-project-list_content {
+    height: 80px;
+}
+
 /** みんなの作品 **/
 .project-list {
     padding: 30px 0 0 90px;
@@ -476,13 +490,16 @@ section {
 .project-card_title {
     height: 13%;
     padding: 0 1% 0 1%;
-    margin-bottom: 0%;
+    margin-top: 0;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 3px solid #58c9c1;
+    border-bottom: 3px solid #75a9ff;
 }
-.project-list_title h3 {
+.project-card_title h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 114px;
     color: rgba(0, 0, 0, 0.89);
 }
