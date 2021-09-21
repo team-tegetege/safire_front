@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./article/article.module').then( m => m.ArticlePageModule)
   },
   {
-    path: 'feedback',
+    path: 'feedback/:project_id',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
   {

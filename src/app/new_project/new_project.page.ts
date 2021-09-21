@@ -34,7 +34,7 @@ export class NewProjectPage {
   title: string;
   thumbnail: string;
   description: string;
-  user_id: string;
+  user_id: string = null;
   allCheckBoxes: any;
   tag_list: any[] = [];
   description_background: string;
@@ -103,6 +103,7 @@ export class NewProjectPage {
               console.log(res)
               this.title = res["title"]
               this.thumbnail = res["thumbnail"]
+              this.user_id = res["user_id"]
 
               var element: HTMLInputElement = <HTMLInputElement>document.getElementById('project_description')
               element.value = res["description"]
@@ -132,7 +133,13 @@ export class NewProjectPage {
             }
           )
         }
-        else this.edit_flag = false
+        else {
+          this.edit_flag = false
+          this.imgSrcProject = '/assets/img/project_img_none.png'
+          this.imgSrcBackground = '/assets/img/project_img_none.png'
+          this.imgSrcPoint = '/assets/img/project_img_none.png'
+          this.imgSrcTech = '/assets/img/project_img_none.png'
+        }
         // console.log(this.edit_flag)
       }
     )
@@ -187,7 +194,7 @@ export class NewProjectPage {
     //thumbnail -> onChangeFileInputProject
     var element: HTMLInputElement = <HTMLInputElement>document.getElementById('project_description');
     this.description = element.value;
-    this.user_id = localStorage.user_id;
+    this.user_id = this.user_id == null ? localStorage.user_id : this.user_id
 
     const allCheckBoxes = document.querySelectorAll("input[type='checkbox']") as NodeListOf<HTMLInputElement>;
     allCheckBoxes.forEach(checkBox => {
