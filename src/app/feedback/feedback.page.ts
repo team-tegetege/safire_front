@@ -20,6 +20,12 @@ export class FeedbackPage implements OnInit {
 
   return: any = {}
 
+  video: HTMLVideoElement
+  video_flag: boolean = false
+  video_text: string = "カメラ起動"
+  stream: any
+  video_button_fill: string = "solid"
+
   constructor(
     private router: Router,
     public gs: GlobalService,
@@ -105,5 +111,41 @@ export class FeedbackPage implements OnInit {
         const idx = speechToken.indexOf(':');
         return { authToken: speechToken.slice(idx + 1), region: speechToken.slice(0, idx) };
       }
+  }
+
+  changeCamera = () => {
+    this.video = document.querySelector("#camera")
+    if (this.video_flag) {
+      // カメラを<video>と同期
+      this.stream.getTracks().forEach(track => track.stop())
+      this.video_flag = !this.video_flag
+      this.video_text = "カメラ起動"
+      this.video_button_fill = "solid"
+    }
+    else {
+      /** カメラ設定 */
+      const constraints = {
+        audio: false,
+        video: {
+          width: 300,
+          height: 200,
+          facingMode: "user"   // フロントカメラを利用する
+          // facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        }
+      }
+
+      // カメラを<video>と同期
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        this.video.srcObject = stream
+        this.stream = stream
+        this.video.onloadedmetadata = (e) => {
+          this.video.play()
+          this.video_flag = !this.video_flag
+          this.video_text = "カメラ停止"
+          this.video_button_fill = "outline"
+        };
+      })
+      .catch( (err) => console.log(err.name + ": " + err.message) );
+    }
   }
 }
