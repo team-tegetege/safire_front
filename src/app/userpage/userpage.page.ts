@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../global.service';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-userpage',
@@ -15,6 +16,7 @@ export class UserpagePage {
   own_project_list: any[];
 
   user_id: string = "hoge";
+  user_id_page: string = "hoge";
   description: string = "こんにちは";
   image: string;
 
@@ -24,34 +26,40 @@ export class UserpagePage {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    public gs: GlobalService
+    public gs: GlobalService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(){
-    console.log('ngOnInit at UserPage');
+    this.route.queryParams
+      //.filter(params => params.user)
+      .subscribe(params => {
+        this.user_id_page = params.user
+      });
     this.getUserInfo()
     this.getAppliedUser()
   }
 
   getUserInfo = () => {
-    this.user_id = localStorage.user_id;
+    //this.user_id = localStorage.user_id;
     const body = {}//this.postObj;
-    this.gs.httpGet(this.url+'mypage/'+this.user_id).subscribe(
+    this.gs.httpGet(this.url+'mypage/'+this.user_id_page).subscribe(
       res => {
         this.returnObj = res;
-        if(this.returnObj['message']){
+        if(this.returnObj['user_id']){
           this.own_project_list = this.returnObj['own_project_list'];
           this.checkTagListLength(this.own_project_list);
           //this.image = this.['thumbnail'];
-          console.log(this.image);
           console.log('Success Get User Info');
           this.description = this.returnObj['description'];
           //プロジェクト一覧
         }
         else{
-          console.log('Error');
           return;
         }
+      },
+      error => {
+        this.router.navigate(['error'])
       }
     )
   }

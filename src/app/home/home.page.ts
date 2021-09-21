@@ -106,15 +106,15 @@ export class HomePage implements OnInit {
   }
 
   toMypage = () => {
-    this.router.navigate(['userpage'])
+    this.router.navigate(['/userpage'], {queryParams: {user: localStorage.user_id}})
   }
 
   toNewProject = () => {
     this.router.navigate(['new_project'])
   }
 
-  toUserPage = () => {
-    this.router.navigate(['userpage']);
+  toUserPage = (user_id) => {
+    this.router.navigate(['/userpage'], {queryParams: {user: user_id}});
   }
 
   toArticlePage = (id: any) => {

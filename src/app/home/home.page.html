@@ -46,7 +46,7 @@
                         <div class="recommended-users">
                             <ion-row class="recommended-users-list">
                                 
-                                <ion-card *ngFor="let user of recommend_user" class="user-card" (click)='toUserPage()'>
+                                <ion-card *ngFor="let user of recommend_user" class="user-card" (click)='toUserPage(user.user_id)'>
                                     <div class="user-card_icon">
                                         <img src="/assets/img/user_ex_icon.jpg">
                                     </div>

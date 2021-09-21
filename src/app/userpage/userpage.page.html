@@ -12,7 +12,7 @@
                 </div>
             </header>
             <div class="home-main">
-                <div class="text_center"><h1 class="user_name">{{user_id}}</h1></div>
+                <div class="text_center"><h1 class="user_name">{{user_id_page}}</h1></div>
                 <section class="user-info">
                     <div class="user-info_icon">
                         <img id="user_icon" src="/assets/img/user_ex_icon.jpg">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </ng-container>
-                    <h2 class="project-list_title">{{user_id}}さんの作品</h2>
+                    <h2 class="project-list_title">{{user_id_page}}さんの作品</h2>
                     <div class="project-list_content">
                         <div class="projects">
                             <div *ngFor="let item of own_project_list">
@@ -67,7 +67,7 @@
                                         </ng-container>
                                     </div>
                                     <div class="project-card_user">
-                                        <p>{{user_id}}</p>
+                                        <p>{{item['user_id']}}</p>
                                     </div>
                                     <div class="project-card_created">
                                         <p>{{item['created_at'].split('T')[0]}}</p>
