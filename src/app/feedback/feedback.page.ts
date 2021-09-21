@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { GlobalService } from '../global.service';
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import axios from 'axios';
@@ -22,16 +22,20 @@ export class FeedbackPage implements OnInit {
 
   constructor(
     private router: Router,
-    public gs: GlobalService
-
+    public gs: GlobalService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     // this.getTokenOrRefresh()
-    this.gs.httpGet("https://techfusion-studio.com/safire/presentation/11").subscribe(
-      res => {
-        this.return = res
-        console.log(res)
+    this.route.params.subscribe(
+      params => {
+        this.gs.httpGet("https://techfusion-studio.com/safire/presentation/" + params["project_id"]).subscribe(
+          res => {
+            this.return = res
+            console.log(res)
+          }
+        )
       }
     )
   }
