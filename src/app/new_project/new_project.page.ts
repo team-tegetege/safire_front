@@ -13,6 +13,7 @@ import * as marked from 'marked';
   templateUrl: 'new_project.page.html',
   styleUrls: ['new_project.page.scss']
 })
+
 export class NewProjectPage {
   url: string = 'https://techfusion-studio.com/safire/'
   postObj: any = {};
@@ -43,7 +44,7 @@ export class NewProjectPage {
   description_technology: string;
   thumbnail_technology: any;
   appendix: string;
-  color: string;
+  color: string = "#2889e9";
 
   interval: any[] = []
   loading: any
@@ -119,7 +120,7 @@ export class NewProjectPage {
               });
               
               this.simplemde.value(res["appendix"])
-              this.color = res["color"]
+              this.color = '#'+res["color"]
 
               this.thumbnail = res["thumbnail"]
               this.imgSrcProject = this.thumbnail == null ? '/assets/img/project_img_none.png' : this.thumbnail
@@ -149,7 +150,6 @@ export class NewProjectPage {
       breaks : true
     });
   }
-
 
   postProject = () => {
     const body = this.postObj;
@@ -345,7 +345,7 @@ export class NewProjectPage {
     this.postObj['thumbnail_idea'] = this.thumbnail_idea;
     this.postObj['thumbnail_technology'] = this.thumbnail_technology;
     this.postObj['appendix'] = this.appendix;
-    this.postObj['color'] = this.color;
+    this.postObj['color'] = this.color.replace('#', '');
     
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',

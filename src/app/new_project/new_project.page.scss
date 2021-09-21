@@ -383,6 +383,19 @@ article {
     opacity: 0.5;
 }
 
+.color-picker {
+    position: relative;
+    width: 70px;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    text-align: center;
+}
+.color-picker:hover {
+    cursor: pointer;
+}
+
 .project-form_main_thumbnails {
     width: 50%;
     margin: 32px 0 0 0px;

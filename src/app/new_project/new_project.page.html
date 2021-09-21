@@ -105,33 +105,10 @@
                             <div class="display_flex">
                                 <div class="center">
                                     <p>メインカラー</p>
-                                    <button onclick="document.getElementById('dialog_color').showModal()">
-                                        <img src="/assets/img/btn_plus.png" alt="タグ追加">
-                                    </button>
-                                    <div>
-                                        <ion-chip>
-                                            <ion-label>{{color}}</ion-label>
-                                        </ion-chip>
-                                    </div>
+                                    <input class="color-picker" [(colorPicker)]="color" [cpAlphaChannel]="disabled" [cpOutputFormat]="rgba" [style.background]="color" [value]="color" readonly/>
                                 </div>
                             </div>
                         </ul>
-                        <dialog class="project-form_color_dialog" id="dialog_color">
-                            <h2 class="project-form_color_dialog_title">メインカラー</h2>
-                            <hr color="#136fff">
-                            <div class="project-form_color_dialog_main">
-                                <h3>メインカラー</h3>
-                                <div class="project-form_color_dialog_sub">
-                                    <input type="radio" name="color" value="red" id="red" [(ngModel)]='color' [checked]="color=='red'">
-                                    <label for="red" class="label_color">赤色</label>
-                                    <input type="radio" name="color" value="blue" id="blue" [(ngModel)]='color' [checked]="color=='blue'">
-                                    <label for="blue" class="label_color">青色</label>
-                                    <input type="radio" name="color" value="green" id="green" [(ngModel)]='color' [checked]="color=='green'">
-                                    <label for="green" class="label_color">緑色</label>
-                                </div>
-                            </div>
-                            <ion-button class="project-form_color_dialog_finish" onclick="document.getElementById('dialog_color').close()">完了</ion-button>
-                        </dialog>
                     </div>
                     <div class="project-form_main_thumbnails">
                         <label>

@@ -32,6 +32,7 @@ export class ArticlePage implements OnInit {
   description_technology: string;
   thumbnail_technology: any;
   appendix: string;
+  appendix_html: string;
   color: string;
 
   owner_flag: boolean;
@@ -92,11 +93,9 @@ export class ArticlePage implements OnInit {
     this.thumbnail_technology = (res['thumbnail_technology'] == null) ? "/assets/img/project_img_none.png" : res['thumbnail_technology']
     $('#detail_tech_img').css('content', 'none');
     this.appendix = res['appendix']
-    this.color = res['color']
+    this.color = '#'+res['color']
 
-    const appendix_html = marked(this.appendix)
-
-    $('#appendix').html(appendix_html);
+    this.appendix_html = marked(this.appendix).replace('\n', '<br>');
   }
 
   toPresentation = () => {

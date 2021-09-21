@@ -8,6 +8,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { NewProjectPageRoutingModule } from './new_project-routing.module';
 
+import { ColorPickerModule } from 'ngx-color-picker';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -16,6 +18,7 @@ import { NewProjectPageRoutingModule } from './new_project-routing.module';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: NewProjectPage }]),
     NewProjectPageRoutingModule,
+    ColorPickerModule
   ],
   declarations: [NewProjectPage]
 })
