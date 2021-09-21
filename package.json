@@ -14,7 +14,6 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/architect": "^0.1202.6",
-    "@angular-material-components/color-picker": "^6.0.0",
     "@angular/animations": "~12.2.6",
     "@angular/cdk": "^12.2.6",
     "@angular/common": "~12.2.6",
@@ -32,7 +31,6 @@
     "jquery": "^3.6.0",
     "marked": "^3.0.3",
     "microsoft-cognitiveservices-speech-sdk": "^1.18.1",
-    "ngx-color": "^7.2.0",
     "ngx-color-picker": "^11.0.0",
     "ngx-simplemde": "^12.0.0",
     "rxjs": "~6.6.0",

@@ -8,8 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { NewProjectPageRoutingModule } from './new_project-routing.module';
 
-import { ColorPickerModule, ColorPickerService } from 'ngx-color-picker';
-import { Color } from '@angular-material-components/color-picker';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
