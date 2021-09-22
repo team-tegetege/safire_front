@@ -13,6 +13,14 @@ export class HomePage implements OnInit {
   returnObj: any = {};
   project_list: any;
 
+  ranking_img_list = [
+    "/assets/img/view_ranking_1.png",
+    "/assets/img/view_ranking_2.png",
+    "/assets/img/view_ranking_3.png",
+    "/assets/img/view_ranking_other.png",
+    "/assets/img/view_ranking_other.png"
+  ]
+
   ranking_flag: boolean = false;
   ranking_display: string = "表示する"
   ranking_project: any[] = [{
@@ -69,13 +77,15 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gs.httpGet(this.url + 'home').subscribe(
+    this.gs.httpGet(this.url + 'home/' + '?' + 'user_id=' + localStorage.user_id).subscribe(
       res => {
         this.returnObj = res;
         console.log(this.returnObj)
         if(this.returnObj['project_list']){
           this.project_list = this.returnObj['project_list'];
           this.checkTagListLength(this.project_list)
+          this.setRecommendUser(this.returnObj.user_list)
+          this.setRecommendProject(this.returnObj.top_project_list)
         }
       }
     )
@@ -106,15 +116,15 @@ export class HomePage implements OnInit {
   }
 
   toMypage = () => {
-    this.router.navigate(['userpage'])
+    this.router.navigate(['/userpage'], {queryParams: {user: localStorage.user_id}})
   }
 
   toNewProject = () => {
     this.router.navigate(['new_project'])
   }
 
-  toUserPage = () => {
-    this.router.navigate(['userpage']);
+  toUserPage = (user_id) => {
+    this.router.navigate(['/userpage'], {queryParams: {user: user_id}});
   }
 
   toArticlePage = (id: any) => {
@@ -135,6 +145,25 @@ export class HomePage implements OnInit {
       if(project['tag_list'].length > 3){
         this.project_list[i]['tag_list'] = project['tag_list'].splice(0, 3)
         this.project_list[i]['tag_list'].push('+')
+      }
+    }
+  }
+
+  setRecommendUser = (user_list: any[]) => {
+    this.recommend_user = user_list;
+    console.log(this.recommend_user)
+  }
+
+  setRecommendProject = (project_list: any[]) => {
+    this.ranking_project = project_list;
+    for(let i in this.ranking_project){
+      this.ranking_project[i]['img'] = this.ranking_img_list[i]
+    }
+    for(let i in this.ranking_project){
+      var project = this.ranking_project[i]
+      if(project['tag_list'].length > 2){
+        this.ranking_project[i]['tag_list'] = project['tag_list'].splice(0, 2)
+        //this.ranking_project[i]['tag_list'].push('+')
       }
     }
   }
