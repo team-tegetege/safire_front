@@ -162,7 +162,7 @@ export class NewProjectPage {
           console.log(this.returnObj['message']);
           if(this.returnObj['message']){
             console.log('Success: Post Project')
-            this.router.navigate(['userpage']);
+            this.router.navigate(['home']);
           }
           else {
             console.log('Error');
@@ -178,7 +178,7 @@ export class NewProjectPage {
           console.log(this.returnObj['message']);
           if(this.returnObj['message']){
             console.log('Success: Post Project')
-            this.router.navigate(['userpage']);
+            this.router.navigate(['home']);
           }
           else {
             console.log('Error');

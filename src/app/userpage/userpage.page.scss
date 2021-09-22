@@ -99,6 +99,11 @@ section {
     text-align: center;
 }
 
+.display_right {
+    display: flex;
+    justify-content: right;
+}
+
 /** ヘッダー **/
 .header {
     width: 100%;
@@ -380,6 +385,8 @@ section {
 }
 .project-card_promotion p {
     font-size: 12px;
+    display: flex;
+    text-align: left;
 }
 
 .project-card_date {
@@ -467,6 +474,7 @@ section {
 
 .liked-project_dialog_finish {
     height: 40px;
+    margin-top: 20px;
     width: 300px;
     --background: #ffffff;
     font-size: 23px;
@@ -475,8 +483,8 @@ section {
     --border-style: solid;
     --border-width: 5px;
     --border-radius: 5px;
-
     font-weight: bolder;
+    
     
 }
 .liked-project_dialog_finish:hover  {
@@ -508,7 +516,7 @@ section {
 
 .liked_project-card {
     width: 300px;
-    height: 400px;
+    height: 450px;
     margin-bottom: 50px;
     margin-left: 30px;
     margin-right: 30px;
@@ -521,6 +529,10 @@ section {
 }
 .liked_project-card:hover{
     cursor: pointer;
+}
+
+.liked-project_content {
+    height: 80px;
 }
 
 .btn_show_liked-project {
@@ -545,4 +557,4 @@ section {
     position:relative;
     border-bottom:none;
     top:7px;
-  }
+}

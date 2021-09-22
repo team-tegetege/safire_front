@@ -26,8 +26,10 @@
                     </div>
                 </section>
 
-                <div class="btn_show_liked-project">
-                    <button onclick="document.getElementById('dialog_liked-project').showModal()">{{user_id_page}}さんが高評価したプロジェクトを見る</button>  
+                <div class="liked-project_content">
+                    <div class="btn_show_liked-project">
+                        <button onclick="document.getElementById('dialog_liked-project').showModal()">{{user_id_page}}さんが高評価したプロジェクトを見る</button>  
+                    </div>
                 </div>
 
                 <section class="project-list">
@@ -91,11 +93,14 @@
                 <dialog class="liked-project_dialog" id="dialog_liked-project">
                     <h2 class="liked-project_dialog_title">{{user_id_page}}さんが高評価したプロジェクト</h2>
                     <hr color="#136fff">
+                    <div class="display_right">
+                        <ion-button class="liked-project_dialog_finish" onclick="document.getElementById('dialog_liked-project').close();">完了</ion-button>
+                    </div>
                     <div class="liked-project_dialog_content">
                         <div class="liked_projects">
                             <div *ngFor="let item of liked_project_list">
                                 <ion-card class="liked_project-card" (click)="toArticlePage(item['id'])">
-                                    <div class="liked_project-card_thumnail">
+                                    <div class="project-card_thumnail">
                                         <img [src]="item['thumbnail']">
                                     </div>
                                     <h3 class="project-card_title">{{item['title']}}</h3>
@@ -119,7 +124,6 @@
                             </div>
                         </div>
                     </div>
-                    <ion-button class="liked-project_dialog_finish" onclick="document.getElementById('dialog_liked-project').close();">完了</ion-button>
                 </dialog>
 
             </div>

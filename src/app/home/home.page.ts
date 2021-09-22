@@ -77,6 +77,11 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  // 既存のページに帰ってくる場合はこっち
+  ionViewDidEnter() {
+    this.checkLogin();
     this.gs.httpGet(this.url + 'home/' + '?' + 'user_id=' + localStorage.user_id).subscribe(
       res => {
         this.returnObj = res;
@@ -89,11 +94,6 @@ export class HomePage implements OnInit {
         }
       }
     )
-  }
-
-  // 既存のページに帰ってくる場合はこっち
-  ionViewDidEnter() {
-    this.checkLogin();
   }
 
   signup = () => {
