@@ -414,5 +414,8 @@ export class FeedbackPage implements OnInit {
   
   toProject = () => {
     this.router.navigate(['/article'])
+    this.top_button_list[0]["list"] = []
+    this.top_button_list[1]["list"] = []
+    this.top_button_list[2]["list"] = []
   }
 }
