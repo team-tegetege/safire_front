@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import marked from 'marked';
 
+import * as faceapi from 'face-api.js';
+
 declare global {
   interface MediaDevices {
     getDisplayMedia(constraints?: MediaStreamConstraints): Promise<MediaStream>;
@@ -51,6 +53,8 @@ export class FeedbackPage implements OnInit {
 
   filler_times: number = 0
   negative_times: number = 0
+  smile_times: number = 0
+  smile_interval: any
 
   top_button_list: any[] = [
     {
@@ -273,6 +277,27 @@ export class FeedbackPage implements OnInit {
     }
   }
 
+  startFaceRead = async () => {
+    // モデルの読み込み
+    await faceapi.nets.tinyFaceDetector.load("assets/models/");
+    await faceapi.nets.faceExpressionNet.load("assets/models/");
+
+    this.smile_interval = setInterval(async () => {
+      // 顔の表情の分類
+      const detectionsWithExpressions = await faceapi.detectAllFaces(this.video,new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
+
+      // 結果の出力
+      console.log(detectionsWithExpressions);
+      if (detectionsWithExpressions.length !== 0) {
+        detectionsWithExpressions.forEach(
+          face => {
+            if (face["expressions"]["happy"] > 0.5) this.smile_times += 1
+          }
+        )
+      }
+    }, 3000)
+  }
+
   startPractice = () => {
     navigator.permissions.query({name: 'microphone'})
     .then((result) => {
@@ -333,6 +358,8 @@ export class FeedbackPage implements OnInit {
     }, 1000)
   }
   async startRecording () {
+    this.smile_times = 0
+    if (this.video_flag) this.startFaceRead()
     this.filler_times = 0
     this.negative_times = 0
     console.log("start recording")
@@ -354,6 +381,7 @@ export class FeedbackPage implements OnInit {
     this.recorder.stop()
     this.combine_stream.getTracks().forEach(track => track.stop())
     this.stopTimer()
+    if (this.video_flag) clearInterval(this.smile_interval)
   }
 
   /* タイマー */
