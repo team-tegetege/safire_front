@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'rate-modal',
     loadChildren: () => import('./rate-modal/rate-modal.module').then( m => m.RateModalPageModule)
   },
+  {
+    path: 'error',
+    loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
+  },
   /*{
     path: 'title',
     loadChildren: () => import('./title/title.module').then( m => m.TitlePageModule)

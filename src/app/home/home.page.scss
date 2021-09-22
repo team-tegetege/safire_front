@@ -659,6 +659,7 @@ dl.view-ranking_search dd button span{
 .ranking-card {
     display: flex;
     margin: 5px 0;
+    flex-wrap: wrap;
 }
 
 .ranking-card_rank {
@@ -690,24 +691,26 @@ dl.view-ranking_search dd button span{
     margin: 3% 0 3% 5%;
     padding-left: 0;
     // text-align: center;
+
 }
 
 .ranking-card_name {
     margin: 2px;
     display: flex;
     align-items: center;
+
 }
 .ranking-card_name p {
     margin: 0;
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-.ranking-card_tags {
+.ranking-project_tags {
     display: flex;
     align-items: left;
-
 }
-.ranking-card_tags p {
+.ranking-project_tags p {
     margin: 0;
+    font-size: 12px;
 }
