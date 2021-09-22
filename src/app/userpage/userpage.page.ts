@@ -37,9 +37,9 @@ export class UserpagePage {
       //.filter(params => params.user)
       .subscribe(params => {
         this.user_id_page = params.user
+        this.getUserInfo()
+        this.getAppliedUser()
       });
-    this.getUserInfo()
-    this.getAppliedUser()
   }
 
   getUserInfo = () => {
@@ -78,6 +78,7 @@ export class UserpagePage {
   }
 
   logout = () => {
+    localStorage.clear()
     this.router.navigate([''])
   }
 
@@ -150,13 +151,15 @@ export class UserpagePage {
   }
 
   getAppliedUser = () => {
-    console.log(this.url + "member?owner_id=" + localStorage.user_id)
-    this.gs.httpGet(this.url + "member?owner_id=" + localStorage.user_id).subscribe(
-      res => {
-        this.applied_user = res
-        this.applied_flag = this.applied_user.length > 0
-      }
-    )
+    if (localStorage.user_id == this.user_id_page) {
+      console.log(this.url + "member?owner_id=" + localStorage.user_id)
+      this.gs.httpGet(this.url + "member?owner_id=" + localStorage.user_id).subscribe(
+        res => {
+          this.applied_user = res
+          this.applied_flag = this.applied_user.length > 0
+        }
+      )
+    }
   }
 
   /** プロジェクトタグが3つ以上の場合はproject-cardに収まらないので3つだけ表示 **/
