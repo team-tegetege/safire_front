@@ -100,7 +100,7 @@
                         <div class="liked_projects">
                             <div *ngFor="let item of liked_project_list">
                                 <ion-card class="liked_project-card" (click)="toArticlePage(item['id'])">
-                                    <div class="liked_project-card_thumnail">
+                                    <div class="project-card_thumnail">
                                         <img [src]="item['thumbnail']">
                                     </div>
                                     <h3 class="project-card_title">{{item['title']}}</h3>
