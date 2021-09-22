@@ -23,6 +23,8 @@ export class UserpagePage {
   applied_user: any[]
   applied_flag: boolean
 
+  liked_project_list: any[];
+
   constructor(
     private router: Router,
     private alertController: AlertController,
@@ -52,6 +54,8 @@ export class UserpagePage {
           //this.image = this.['thumbnail'];
           console.log('Success Get User Info');
           this.description = this.returnObj['description'];
+          this.setLikedProjects(this.returnObj['liked_project_list'])
+          this.checkTagListLength_liked(this.liked_project_list);
           //プロジェクト一覧
         }
         else{
@@ -164,5 +168,18 @@ export class UserpagePage {
         this.own_project_list[i]['tag_list'].push('+')
       }
     }
+  }
+  checkTagListLength_liked = (projects: any[]) => {
+    for(let i in projects){
+      var project = projects[i]
+      if(project['tag_list'].length > 3){
+        this.liked_project_list[i]['tag_list'] = project['tag_list'].splice(0, 3)
+        this.liked_project_list[i]['tag_list'].push('+')
+      }
+    }
+  }
+
+  setLikedProjects = (projects: any[]) => {
+    this.liked_project_list = projects
   }
 }
