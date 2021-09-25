@@ -56,6 +56,9 @@ export class FeedbackPage implements OnInit {
   smile_times: number = 0
   smile_interval: any
 
+  m: number = 0
+  s: number = 0
+
   top_button_list: any[] = [
     {
       name: "入力内容表示",
@@ -394,23 +397,35 @@ export class FeedbackPage implements OnInit {
   countUp = () => {
     this.timer_id = setTimeout(() => {
         this.timer_between = Date.now() - this.timer_start
-        this.updateTimer()
-        this.countUp();
+        if (this.m >= 10) {
+          this.speechFlag = false
+          this.alertLimit()
+        }
+        else {
+          this.updateTimer()
+          this.countUp();
+        }
     },200);
   }
   updateTimer = () => {
-    let m = Math.floor(this.timer_between / 60000);
-    let s = Math.floor(this.timer_between % 60000 / 1000);
+    this.m = Math.floor(this.timer_between / 60000);
+    this.s = Math.floor(this.timer_between % 60000 / 1000);
     //let ms = this.timer_between % 1000;
-
-    let minute = ('0' + m).slice(-2);
-    let second = ('0' + s).slice(-2);
+    let minute = ('0' + this.m).slice(-2);
+    let second = ('0' + this.s).slice(-2);
     //let millisecond = ('0' + ms).slice(-3);
 
     this.timer = minute + ':' + second
   }
   stopTimer = () => {
     clearTimeout(this.timer_id)
+  }
+  alertLimit = async () => {
+    const alert = await this.alertController.create({
+      message: '連続発表練習時間の10分に到達しました☺️',
+      buttons: [ { text: 'OK' } ]
+    });
+    await alert.present();
   }
   
   toProject = () => {
