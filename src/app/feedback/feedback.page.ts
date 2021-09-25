@@ -158,7 +158,8 @@ export class FeedbackPage implements OnInit {
     if (result.reason === sdk.ResultReason.RecognizedSpeech) {
       this.char_per_sec =  (result.text.length / ((Date.now() - this.timer_last) / 1000)).toFixed(1)
       this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] `
-      this.checkFiller(String(result.text))
+      // this.checkFiller(String(result.text))
+      this.checkNegative(String(result.text))  // filler検知を飛ばす場合
       // this.text = this.text + `[${this.timer} ${this.char_per_sec}char/sec] ${result.text}<br>`
     }
     if (this.speechFlag == true) {
